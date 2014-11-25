@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      a, a:visited {
+        color: #a6e22e;
+        text-decoration: none;
+      }
+
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+      .inverse.section-start h1 {
+        color: #a6e22e;
+      }
+
+      /* Two-column layout */
+      .left-column,
+      .left-column-2,
+      .left-column-3,
+      .left-column-4,
+      .left-column-5 {
+        color: #777;
+        width: 40%;
+        float: left;
+        clear: left;
+      }
+      .right-column,
+      .right-column-2,
+      .right-column-3,
+      .right-column-4,
+      .right-column-5 {
+        width: 60%;
+        float: right;
+        padding-top: 1em;
+        clear: right;
+      }
+      .footer {
+        width: 100%;
+        clear: both;
+      }
+
+      .native-components input,
+      .native-components select,
+      .native-components button {
+        font-size: 30px;
+        /*width: 20%;*/
+      }
+      .native-components select {
+        -webkit-appearance: menulist-button;
+      }
+      .native-components input[type=checkbox] {
+        /* All browsers except webkit*/
+        transform: scale(1.5);
+
+        /* Webkit browsers*/
+        -webkit-transform: scale(1.5);
+      }
+      .native-components code {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="js/remark.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+        sourceUrl: 'slides.md'
+      });
+    </script>
+  </body>
+</html>
