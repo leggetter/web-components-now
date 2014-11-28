@@ -78,7 +78,7 @@ document.body.addEventListener( 'click', function( e ) {
 } );
 
 function createPhils() {
-  var tooManyPhils = 100;
+  var tooManyPhils = 104;
   var phils = 0;
   do {
     var el = document.createElement( 'my-avatar' );

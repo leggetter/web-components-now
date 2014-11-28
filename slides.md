@@ -33,17 +33,6 @@ class: inverse, middle, center, section-start
 
 ---
 
-class: inverse, middle, center, section-start
-
-# What are Web Components?
-
-* Custom Elements
-* Templates
-* Shadow DOM
-* HTML Imports
-
----
-
 class: native-components, middle, center
 
 ## Elements
@@ -131,7 +120,7 @@ Stuff around sections or grouping content e.g. `main`, `nav`, `footer`, `figure`
 ]
 
 .right-column-2[
-<progress /><br />
+<progress></progress><br />
 Form improvements e.g. `meter`, `datalist`, `keygen`, `output`
 ]
 
@@ -142,7 +131,12 @@ Form improvements e.g. `meter`, `datalist`, `keygen`, `output`
 ]
 
 .right-column-3[
-<video /><br />
+<video preload="metadata" style="height: 200px;">
+	<source src="assets/dizzy.mp4" type="video/mp4">
+	<source src="assets/dizzy.webm" type="video/webm">
+	<source src="assets/dizzy.ogv" type="video/ogg">
+</video>
+<br />
 Embedded content e.g. `audio`, `canvas`, `svg`, `math`
 ]
 
@@ -218,7 +212,8 @@ class: inverse, section-start, middle, center
 # The Solution: Custom Elements
 --
 
-### (More than just markup)
+### More than just markup
+### IMHO the most important part of Web Components
 
 ???
 
@@ -336,8 +331,7 @@ class: code-reveal
 
 ```xml
 <script>
-var MyAvatarPrototype =
-Object.create(HTMLElement.prototype);
+var MyAvatarPrototype = Object.create(HTMLElement.prototype);
 ```
 
 --
@@ -347,7 +341,11 @@ MyAvatarPrototype.createdCallback = function() {
 	var username = this.getAttribute('username'),
 	service = this.getAttribute('service'),
 	url = 'http://avatars.io/' + service + '/' + username;
+```
 
+--
+
+```js
 	var img = document.createElement( 'img' );
 	img.setAttribute('src', url);
 	this.appendChild(img);
@@ -404,6 +402,16 @@ Define your own elements.
 
 .right-example-col[
 <my-avatar service="instagram" username="leggetter" />
+]
+
+.left-code-col[
+```xml
+<my-avatar service="twitter" username="garyshort" />
+```
+]
+
+.right-example-col[
+<my-avatar service="twitter" username="garyshort" />
 ]
 
 ---
@@ -474,7 +482,7 @@ Extending existing elements
 ```xml
 <script>
 function createPhils() {
-	var tooManyPhils = 100;
+	var tooManyPhils = 104;
 	var phils = 0;
 	do {
 		var el = document.createElement( 'my-avatar' );
@@ -618,7 +626,7 @@ class: inverse, section-start, center, middle
 
 ---
 
-## Shadow Dom - Problems is solves
+## Shadow DOM - Problems is solves
 
 --
 
