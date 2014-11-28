@@ -500,7 +500,7 @@ function createPhils() {
 ---
 
 background-image: url(img/why-custom-elements.png)
-class: middle, center, trans-head, inverse
+class: middle, center, trans-head
 
 ## Why Custom Elements?
 
@@ -527,7 +527,7 @@ class: inverse, section-start, middle, center
 ---
 
 background-image: url(img/template-chooser.png)
-class: inverse, trans-code, middle
+class: trans-code, middle
 
 ```xml
 <script type="text/x-handlebars-template">
@@ -744,74 +744,285 @@ class: middle, center
 
 ---
 
-## HTML Imports
+class: inverse, section-start, middle, center
+
+# HTML Imports
+
+## Loading & Dependency Management
 
 ---
 
-class: inverse, section-start
+## HTML Imports - Example
+
+### Before
+
+```xml
+<link rel="stylesheet" href="bootstrap.css" />
+<link rel="stylesheet" href="fonts.css" />
+<script src="jquery.js"></script>
+<script src="bootstrap.js"></script>
+<script src="bootstrap-tooltip.js"></script>
+<script src="bootstrap-dropdown.js"></script>
+```
+
+--
+
+### After
+
+```xml
+<link rel="import" href="bootstrap.html" />
+```
+
+---
+
+class: code-reveal
+
+## HTML Imports - Composition
+
+`dunddd-organisers.html`
+
+--
+
+```xml
+<link rel="import" href="my-avatar-import.html" />
+```
+
+--
+
+```xml
+<template id="dunddd-organisers-tmpl">
+	<style>...</style>
+
+	<my-avatar-import service="twitter" username="argibson" />
+	<my-avatar-import service="twitter" username="CAMMURPHY" />
+	<my-avatar-import service="twitter" username="colinmackay" />
+	<my-avatar-import service="twitter" username="andycobley" />
+</template>
+```
+
+--
+
+```xml
+<script>
+	var DunDDDOrganisersPrototype = Object.create(HTMLElement.prototype);
+
+	DunDDDOrganisersPrototype.createdCallback = function() {
+		// Get template, createShadowRoot etc.
+	};
+
+	document.registerElement('dunddd-organisers', {
+		prototype: DunDDDOrganisersPrototype
+	});
+</script>
+```
+
+---
+
+## HTML Imports - Composition Demo
+
+```xml
+<link rel="import" href="assets/dunddd-organisers.html" />
+
+<dunddd-organisers></dunddd-organisers>
+```
+
+--
+
+<link rel="import" href="assets/dunddd-organisers.html" />
+
+<dunddd-organisers></dunddd-organisers>
+
+---
+
+## HTML Imports - Gotchas / Patterns!
+
+### Get & use `document` from the `currentScript`
+
+```
+( function( currentScript ) {
+
+	var ownerDoc = currentScript.ownerDocument;
+
+} )( document._currentScript || document.currentScript );
+```
+
+### `importNode` and not `cloneNode` for Template
+
+```js
+// Note: use ownerDoc
+var content = ownerDoc.querySelector( '#my-template' );
+
+var clone = ownerDoc.importNode( content, true );
+```
+
+---
+
+class: center, middle
+
+# Why Use HTML Imports?
+
+* Bundle JS/HTML/CSS → single URL
+* Basic dependency management
+	* Sharing & reuse
+* Supports composition
+
+---
+
+class: inverse, section-start, middle, center
 
 # State of Native Support
 
 ---
 
+class: stats
+
+## Browsers
+
 <table>
 	<thead>
 		<tr>
 			<td></td>
-			<td>Chrome</td>
-			<td>Firefox</td>
-			<td>Safari</td>
-			<td>IE</td>
+			<td>Chrome 42</td>
+			<td>Firefox 36</td>
+			<td>Safari 8</td>
+			<td>IE 10</td>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>Custom Elements</td>
-			<td>Y</td>
-			<td>Y</td>
-			<td>?</td>
-			<td>N</td>
+			<td class="yes">Y</td>
+			<td class="maybe">N*</td>
+			<td class="no">N</td>
+			<td class="no">N</td>
 		</tr>
 		<tr>
 			<td>Templates</td>
-			<td>Y</td>
-			<td>Y</td>
-			<td>?</td>
-			<td>N</td>
+			<td class="yes">Y</td>
+			<td class="yes">Y</td>
+			<td class="yes">Y</td>
+			<td class="no">N</td>
 		</tr>
 		<tr>
 			<td>Shadow DOM</td>
-			<td>Y</td>
-			<td>Y</td>
-			<td>?</td>
-			<td>N</td>
+			<td class="yes">Y</td>
+			<td class="maybe">N*</td>
+			<td class="no">N</td>
+			<td class="no">N</td>
 		</tr>
 		<tr>
 			<td>HTML Imports</td>
-			<td>Y</td>
-			<td>Y</td>
-			<td>?</td>
-			<td>N</td>
+			<td class="yes">Y</td>
+			<td class="yes">Y</td>
+			<td class="no">N</td>
+			<td class="no">N</td>
 		</tr>
 	</tbody>
 </table>
 
+<small>* Can be enabled in config</small>
+
 ---
 
-class: inverse, section-start
+background-image: url(img/ie-status.png)
+class: trans-head, center
 
-## Componentised Web Apps now
+## Internet Explorer
+
 
 ???
 
-* Should native browser support stop us thinking about building
-componentised web apps?
+There's hope
+
+---
+
+background-image: url(img/safari-logo.png)
+class: trans-head, center, middle
+
+# Safari?
+
+---
+
+class: stats
+
+## Browsers - with Polyfills
+
+<table>
+<thead>
+<tr>
+<td></td>
+<td>Chrome 42</td>
+<td>Firefox 36</td>
+<td>Safari 8</td>
+<td>IE 10</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom Elements</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+</tr>
+<tr>
+<td>Templates</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+</tr>
+<tr>
+<td>Shadow DOM</td>
+<td class="yes">Y</td>
+<td class="maybe">Y*</td>
+<td class="maybe">Y*</td>
+<td class="maybe">Y*</td>
+</tr>
+<tr>
+<td>HTML Imports</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+<td class="yes">Y</td>
+</tr>
+</tbody>
+</table>
+
+<small>* <a href="http://webcomponents.org/polyfills/shadow-dom/#known-limitations">Shadow DOM Polyfill limitations</a></small>
+
+---
+
+class: inverse, section-start, middle, center
+
+# Componentised Web Apps now
+
+
+---
+
+## Componentised Web Apps now - questions?
+
+*Should native browser support stop us thinking about building
+componentised web apps?*
+
+--
+
+**No!**
+
+--
+
+*Should we be build componentised web apps anyway?*
+
+--
+
+**We're already building web apps out of components *right now*!**
 
 ---
 
 class: inverse, center, middle, section-start
 
 # JavaScript
+# Libraries & Frameworks
 
 ---
 
@@ -828,10 +1039,6 @@ class: inverse, center, middle, section-start
 ---
 
 ### ReactJS
-
----
-
-### webcomponent.js polyfills
 
 ---
 
