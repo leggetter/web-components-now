@@ -144,12 +144,12 @@
         text-align: left;
       }
 
-      .code-join pre {
+      .code-reveal pre {
         margin-top: 0;
         margin-bottom: 0;
       }
 
-      .code-join pre code {
+      .code-reveal pre code {
         border-radius: 0;
         /*padding-bottom: 0 !important;
         padding-top: 0 !important;*/
@@ -157,8 +157,9 @@
 
       .trans-head h1,
       .trans-head h2,
-      .trans-head h3 {
-        background-color: rgba(0,0,0,0.6);
+      .trans-head h3,
+      .trans-code pre > * {
+        background-color: rgba(0,0,0,0.6) !important;
         padding: 20px 25px;
         border-radius: 5px;
         color: white;
@@ -188,6 +189,37 @@
         }
       });
     </script>
+
+    <template id="my-avatar-template">
+      <style>
+        .container { background-color: cyan; }
+        .float-right { width: 130px; float: right; }
+        img { float: left; }
+        .username { font-size: 18px; float: right; clear: right; }
+        .service { font-size: 14px; float: right; clear: right; }
+      </style>
+      <div class="container float-right">
+        <img class="avatar" />
+        <span class="username"></span>
+        <span class="service"></span>
+      </div>
+    </template>
+
+    <template id="my-avatar-shadow-tmpl">
+      <style>
+        .container { background-color: red; color: white; }
+        .float-right { width: 130px; float: right; }
+        #avatar { float: left; }
+        #username { font-size: 18px; float: right; clear: right; }
+        #service { font-size: 14px; float: right; clear: right; }
+      </style>
+      <div class="container float-right">
+        <img id="avatar" />
+        <span id="username"></span>
+        <span id="service"></span>
+      </div>
+    </template>
+
     <script src="js/demos.js"></script>
   </body>
 </html>

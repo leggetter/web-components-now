@@ -44,16 +44,125 @@ class: inverse, middle, center, section-start
 
 ---
 
+class: native-components, middle, center
+
 ## Elements
+
+.left-column[
+```xml
+<button>Click Me</button>
+```
+]
+
+.right-column[
+<button>Click Me</button>
+]
+
+.left-column-2[
+```xml
+<input type="text" />
+<input type="number" />
+<input type="password" />
+```
+]
+
+.right-column-2[
+<input type="text" /><br />
+They all look the same
+]
+
+.left-column-3[
+```xml
+<select>
+	<option>Select Me</option>
+	<option>Dude</option>
+</select>
+```
+]
+
+.right-column-3[
+<select>
+<option>Select Me</option>
+<option>Dude</option>
+</select>
+]
+
+.left-column-4[
+```xml
+<label>Check Me</label>
+<input type="checkbox" />
+```
+]
+
+.right-column-4[
+<label>Check Me</label><input type="checkbox" />
+]
+
+.footer[
+`a`, `b`, `blockquote`, `body`, `br`, `code`, `div`, `em`, `fieldset`, `h1`, `h2`, `hr`, `img`, `li`, `ol`, `p`, `pre`, `span`, `strong`, `style`, `table`, `tr`, `td`, ...
+]
+
+???
+
+* We do have native components
+* Basic
+* Difficult to style
+
+---
+
+class: native-components, middle, center
+
+## HTML5 Elements
+
+.left-column[
+```xml
+<header>I'm a header</header>
+```
+]
+
+.right-column[
+Stuff around sections or grouping content e.g. `main`, `nav`, `footer`, `figure`, `article`, `aside` etc.
+]
+
+.left-column-2[
+```xml
+<progress />
+```
+]
+
+.right-column-2[
+<progress /><br />
+Form improvements e.g. `meter`, `datalist`, `keygen`, `output`
+]
+
+.left-column-3[
+```xml
+<video />
+```
+]
+
+.right-column-3[
+<video /><br />
+Embedded content e.g. `audio`, `canvas`, `svg`, `math`
+]
+
+.footer[
+]
+
+???
+
+---
+
+## Elements - Structure & Meaning
 
 ```xml
 <!doctype html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8" />
 		<title>HTML Elements</title>
-		<meta name="description" content="">
-		<link rel="stylesheet" href="css/stylez.css">
+		<meta name="description" content="" />
+		<link rel="stylesheet" href="css/stylez.css" />
 	</head>
 	<body>
 		<nav>
@@ -85,7 +194,7 @@ class: inverse, middle, center, section-start
 background-image: url(img/gmail.png)
 class: center, middle, trans-head
 
-## Elements in apps
+## Elements in "apps"
 
 ???
 
@@ -109,7 +218,7 @@ class: inverse, section-start, middle, center
 # The Solution: Custom Elements
 --
 
-### (They offers more too)
+### (More than just markup)
 
 ???
 
@@ -118,7 +227,7 @@ class: inverse, section-start, middle, center
 
 ---
 
-class: code-join
+class: code-reveal
 
 ## Custom Elements: A new Gmail
 
@@ -215,7 +324,7 @@ class: code-join
 
 ---
 
-class: code-join
+class: code-reveal
 
 ## Custom Elements
 
@@ -299,7 +408,7 @@ Define your own elements.
 
 ---
 
-class: code-join
+class: code-reveal
 
 ## Custom Elements - Extending
 
@@ -311,13 +420,13 @@ class: code-join
 
 ```js
 <script>
-var MyAvatarPrototype = Object.create(HTMLImageElement.prototype);
+var MyAvatarExtPrototype = Object.create(HTMLImageElement.prototype);
 ```
 
 --
 
 ```js
-MyAvatarPrototype.createdCallback = function() {
+MyAvatarExtPrototype.createdCallback = function() {
 	var username = this.getAttribute('username'),
 	service = this.getAttribute('service'),
 	url = 'http://avatars.io/' + service + '/' + username;
@@ -330,7 +439,7 @@ MyAvatarPrototype.createdCallback = function() {
 
 ```js
 document.registerElement('my-avatar-ext', {
-	prototype: MyAvatarPrototype,
+	prototype: MyAvatarExtPrototype,
 	extends: 'img'
 });
 </script>
@@ -402,13 +511,228 @@ class: inverse, section-start, middle, center
 
 ## Native HTML Templating Support
 
+???
+
+* The HTML markup version of jQuery
+* We needed it so it's become a browser standard
+
 ---
 
+background-image: url(img/template-chooser.png)
+class: inverse, trans-code, middle
 
+```xml
+<script type="text/x-handlebars-template">
+	<div class="entry">
+		<h1>{{title}}</h1>
+		<div>{{body}}</div>
+	</div>
+</script>
+```
+
+???
+
+* Examples of templating solutions.
+* Why we need a native solution
+	* Hacky
+	* The majority push around strings
+	* XSS vulnerable
+---
+
+class: code-reveal, container
+
+## HTML Templates <button data-action="createAvatar">Create Avatar</button>
+
+```xml
+<template id="my-avatar-template">
+	<style>
+		.container { background-color: cyan; }
+		<!-- omitted for brevity -->
+	</style>
+	<div class="container">
+		<img class="avatar" />
+		<span class="username"></span>
+		<span class="service"></span>
+	</div>
+</template>
+```
+
+--
+
+```js
+var MyAvatarTmplPrototype = Object.create(HTMLElement.prototype);
+
+MyAvatarTmplPrototype.createdCallback = function() {
+	// get attributes & build url
+```
+
+--
+
+```js
+	var content = document.querySelector( '#my-avatar-template' ).content;
+	var el = content.cloneNode( true );
+```
+
+--
+
+```js
+	el.querySelector( '.avatar' ).setAttribute( 'src', url );
+	el.querySelector( '.username' ).textContent = username;
+	el.querySelector( '.service' ).textContent = service;
+	this.appendChild( el );
+};
+```
+
+--
+
+```js
+document.registerElement('my-avatar-tmpl', {
+	prototype: MyAvatarTmplPrototype
+});
+```
 
 ---
 
-## Shadow DOM
+class: middle, center
+
+## Why native HTML Templates?
+
+* Libraries → Native
+* Native benefits
+* Document fragment = lightweight
+* Inert until until cloned/used
+
+???
+
+* use DOM to scaffold DOM → no XSS
+* parsed, not rendered
+* content is inert until cloned/used
+* doc fragment → not part of the page
+
+---
+
+class: inverse, section-start, center, middle
+
+# Shadow DOM
+## DOM/CSS "scoping" / protection
+
+---
+
+## Shadow Dom - Problems is solves
+
+--
+
+.left-code-col[
+```xml
+Styles <span class="container">Bleed!</span>
+```
+
+```xml
+<template id="my-avatar-tmpl">
+	<style>
+		.container { background-color: cyan; }
+		...
+```
+
+```xml
+<my-avatar-tmpl service="twitter" username="leggetter" />
+```
+]
+
+.right-example-col[
+Styles <span class="container">Bleed!</span>
+<button data-action="createAvatar">Me</button>
+]
+
+--
+
+.left-code-col[
+```xml
+<template id="my-avatar-template">
+	<div class="container">
+		<img id="avatar" />
+		...
+</template>
+```
+]
+
+.right-example-col[
+Global DOM <br /> e.g. `id` attributes
+]
+
+???
+
+* bleed -> styles from the page bleed in or styles from the element out
+
+---
+
+class: code-reveal, container
+
+## Shadow DOM - In Action <button data-action="createCraig">Create Craig</button>
+
+--
+
+```xml
+<template id="my-avatar-shadow-tmpl">
+	<style>
+		.container { background-color: red; color: white; }
+		...
+	</style>
+	<div class="container">
+		<img id="avatar" />
+		...
+	</div>
+</template>
+```
+
+--
+
+```js
+var MyAvatarShadowPrototype = Object.create(HTMLElement.prototype);
+
+MyAvatarShadowPrototype.createdCallback = function() {
+	// get attributes & build url
+
+	var content =
+		document.querySelector( '#my-avatar-shadow-tmpl' ).content;
+```
+
+--
+
+```js
+	this.shadow = this.createShadowRoot();
+	this.shadow.appendChild( content.cloneNode( true ) );
+```
+
+--
+
+```js
+	this.shadow.querySelector( '#avatar' ).setAttribute( 'src', url );
+	this.shadow.querySelector( '#username' ).textContent = username;
+	this.shadow.querySelector( '#service' ).textContent = service;
+};
+
+```
+
+--
+
+```js
+document.registerElement('my-avatar-shadow', {
+	prototype: MyAvatarShadowPrototype
+});
+```
+
+---
+
+class: middle, center
+
+## Why Shadow DOM?
+
+* DOM & CSS Scoping
+* Protection for all: Page and Element
+* Encapsulation
+
+???
 
 ---
 
@@ -474,116 +798,6 @@ class: inverse, section-start
 
 * Should native browser support stop us thinking about building
 componentised web apps?
-
----
-
-class: native-components, middle, center
-
-## Native Components
-
-.left-column[
-```xml
-<button>Click Me</button>
-```
-]
-
-.right-column[
-<button>Click Me</button>
-]
-
-.left-column-2[
-```xml
-<input type="text" />
-<input type="number" />
-<input type="password" />
-```
-]
-
-.right-column-2[
-<input type="text" /><br />
-They all look the same
-]
-
-.left-column-3[
-```xml
-<select>
-	<option>Select Me</option>
-	<option>Dude</option>
-</select>
-```
-]
-
-.right-column-3[
-<select>
-	<option>Select Me</option>
-	<option>Dude</option>
-</select>
-]
-
-.left-column-4[
-```xml
-<label>Check Me</label>
-<input type="checkbox" />
-```
-]
-
-.right-column-4[
-<label>Check Me</label><input type="checkbox" />
-]
-
-.footer[
-`a`, `b`, `blockquote`, `body`, `br`, `code`, `div`, `em`, `fieldset`, `h1`, `h2`, `hr`, `img`, `li`, `ol`, `p`, `pre`, `span`, `strong`, `style`, `table`, `tr`, `td`, ...
-]
-
-???
-
-* We do have native components
-* Basic
-* Difficult to style
-
----
-
-class: native-components, middle, center
-
-## HTML5 Native Components
-
-.left-column[
-```xml
-<header>I'm a header</header>
-```
-]
-
-.right-column[
-Stuff around sections or grouping content e.g. `main`, `nav`, `footer`, `figure`, `article`, `aside` etc.
-]
-
-.left-column-2[
-```xml
-<progress />
-```
-]
-
-.right-column-2[
-<progress /><br />
-Form improvements e.g. `meter`, `datalist`, `keygen`, `output`
-]
-
-.left-column-3[
-```xml
-<video />
-```
-]
-
-.right-column-3[
-<video /><br />
-Embedded content e.g. `audio`, `canvas`, `svg`, `math`
-]
-
-.footer[
-]
-
-???
-
 
 ---
 
