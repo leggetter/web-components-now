@@ -4,6 +4,14 @@ class: inverse, center, middle
 # Web Components.
 # And How.
 
+<span style="position: absolute; left: 1em; bottom: 2em;">
+	Phil [@leggetter](https://twitter.com/leggetter)
+</span>
+
+<span style="position: absolute; right: 1em; bottom: 2em;">
+	<a href="https://twitter.com/hashtag/dunddd?f=realtime&src=hash">#DunDDD</a>
+</span>
+
 ---
 
 class: inverse, center, middle
@@ -15,7 +23,7 @@ class: inverse, center, middle
 
 ---
 
-class: inverse, middle, center, section-start
+class: inverse, center, section-start
 
 # What we'll cover
 
@@ -25,7 +33,7 @@ class: inverse, middle, center, section-start
 * Why Web Components are the future!
 --
 
-* Highly recommend [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/)
+* &hearts; [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/) &hearts;
 
 ???
 
@@ -1298,36 +1306,107 @@ class: center
 
 ---
 
-class: inverse, section-start
+class: inverse, section-start, middle center
 
 # Why Web Components are the future!
 
 ---
 
-### Encourages good software development
+class: center, middle
 
-* Componentised Development
-* Supports Change
-* Encapsulation
-* Loose Coupling
-* High Cohesion
-* Reusability
+## You're already building componentised web apps
+
+### If you're not, you probably should be
 
 ---
 
-### Backing
+## Trends
+
+### Libraries
+
+* Alignment toward Web Components
+
+### Browser Vendors
 
 * Google
 * Mozilla Firefox
+* Microsoft - previously: HTA, Behaviours & ASP Controls
+* Apple - ?
+* Opera - uses Blink
+
+???
+
+* Libraries: Angular, Ember, KO all very much align
+* Whether we like Google or not, they are pushing the web forward
+* Mozilla seem to be on board with web components
+* MS actually did this previously with HTA and behaviours
 
 ---
 
-### Problems. Solved in the future.
+class: middle, center
 
-* HTTP2
-* Shared scripts
+## Encourages good software development
+
+* [Component-based Development](http://en.wikipedia.org/wiki/Component-based_software_engineering)
+* Encapsulation
+* Loose Coupling
+* Supports Change
+* High Cohesion
+* Reusability
+
+???
+
+* Component-based - modularity
+* Encapsulation - naturally
+* Loose coupling
+	* through component APIs
+* Change - loose coupling, encapsulation and interaction through APIs
+* Functional cohesion - everything that's related together (HTML imports)
+
+---
+
+class: middle, center
+
+## Problems. Solved in the future?
+
+* HTML Imports: Vulcanize | HTTP2
+* Shared scripts?
 * Cross-component communication?
 
 ---
 
+class: inverse
+
 ## Summary
+
+
+* Custom Elements - **Awesome**
+
+--
+
+* HTML Templates, Shadow DOM, HTML Imports - **Native FTW**
+
+--
+
+* *Can* & *are* building componentised web apps now
+
+--
+
+* Trends & "best practice" &hearts; Web Components
+
+--
+
+* **Web Components of the future!**
+
+???
+
+* Custom Elements - foundation of Web Components. The building blocks of apps to come.
+
+---
+
+class: inverse, center, middle
+
+# Thanks
+
+## Phil [@leggetter](https://twitter.com/leggetter)
+## [https://github.com/leggetter/web-components-now](https://github.com/leggetter/web-components-now)
