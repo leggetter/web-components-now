@@ -45,9 +45,31 @@ class: inverse, center, section-start
 
 ---
 
+class: inverse, center, middle, section-start
+
+# What are Web Components?
+
+---
+
+class: center, middle
+
+# What are Web Components?
+
+* Custom Elements
+* HTML Templates
+* Shadow DOM
+* HTML Imports
+
+
+???
+
+* But, before we start let's look at what we've got right now
+
+---
+
 class: native-components, middle, center
 
-## Elements
+## Right Now - Elements
 
 .left-column[
 ```xml
@@ -1303,15 +1325,21 @@ class: center
 
 --
 
-* Angular
-* Ember
-* Backbone
-* Knockout
-* React
-* Web Components with Polyfills
-* Polymer
+Angular, Ember, Backbone, Knockout, React, Web Components with Polyfills, Polymer
 
 ## **You** probably are already
+
+--
+
+```xml
+<ng-avatar service="twitter" username="leggetter" />
+```
+
+vs.
+
+```xml
+<my-avatar service="twitter" username="leggetter" />
+```
 
 ---
 
