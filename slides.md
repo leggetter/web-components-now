@@ -1,7 +1,7 @@
 class: inverse, center, middle
 
 # Why you should be using
-# Web Components.
+# Web Components Now.
 # And How.
 
 <span style="position: absolute; left: 1em; bottom: 2em;">
@@ -11,6 +11,10 @@ class: inverse, center, middle
 <span style="position: absolute; right: 1em; bottom: 2em;">
 	<a href="https://twitter.com/hashtag/dunddd?f=realtime&src=hash">#DunDDD</a>
 </span>
+
+???
+
+* Slide tweak to the advertised title. Added "Now".
 
 ---
 
