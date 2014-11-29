@@ -1244,6 +1244,11 @@ And...
 background-image: url(img/layers-of-polymer.png)
 class: trans-head, center
 
+???
+
+* Material design
+* Paper elements
+
 ---
 
 class: code-reveal
@@ -1310,6 +1315,19 @@ class: center
 
 ---
 
+class: middle, center, trans-all, inverse
+background-image: url(img/poly-mail.png)
+
+## Examples
+
+* [From Eric's Slides](http://polymer-change.appspot.com/#19)
+	* GitHub
+	* Chrome OS
+* [GMail built in Polymer](https://poly-mail.appspot.com/)
+* [Topeka game built in Polymer](https://www.polymer-project.org/apps/topeka/)
+
+---
+
 class: inverse, section-start, middle center
 
 # Why Web Components are the future!
@@ -1333,8 +1351,8 @@ class: center, middle
 ### Browser Vendors
 
 * Google
-* Mozilla Firefox
-* Microsoft - previously: HTA, Behaviours & ASP Controls
+* Mozilla
+* Microsoft - previously: HTA & ASP.NET Controls
 * Apple - ?
 * Opera - uses Blink
 
@@ -1375,6 +1393,7 @@ class: middle, center
 
 * HTML Imports: Vulcanize | HTTP2
 * Shared scripts?
+* Multiple versions?
 * Cross-component communication?
 
 ---
@@ -1405,6 +1424,7 @@ class: inverse
 ???
 
 * Custom Elements - foundation of Web Components. The building blocks of apps to come.
+* Custom Elements - declarative, readable, support extension, native benefits
 
 ---
 
