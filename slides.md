@@ -989,6 +989,8 @@ class: stats
 </tbody>
 </table>
 
+http://webcomponents.org/polyfills
+
 <small>* <a href="http://webcomponents.org/polyfills/shadow-dom/#known-limitations">Shadow DOM Polyfill limitations</a></small>
 
 ---
@@ -1026,19 +1028,273 @@ class: inverse, center, middle, section-start
 
 ---
 
+class: code-reveal
+
 ### AngularJS
 
+--
+
+```xml
+<script src="js/angular.min.js"></script>
+```
+
+--
+
+```xml
+<script>
+angular.module('demo', [])
+	.directive('ngAvatar', function () {
+		return {
+```
+
+--
+
+```js
+			restrict:"AEC",
+```
+
+--
+
+```js
+			scope: {
+				service: '@',
+				username: '@'
+			},
+```
+
+--
+
+```xml
+			template: '<img src="http://avatars.io/' +
+					  '{{service}}/{{username}}" />'
+		};
+	});
+</script>
+```
+
+```xml
+<body ng-app="demo">
+```
+
+--
+
+```xml
+	<ng-avatar service="twitter" username="leggetter" />
+```
+
+--
+
+<div ng-app="demo" style="text-align: center; margin-top: 20px;">
+	<ng-avatar service="twitter" username="leggetter" />
+</div>
+
+???
+
+* A - attribute on element, E - element, C - class name
+
 ---
+
+class: code-reveal
 
 ### EmberJS
 
+--
+
+```xml
+<script src="js/jquery-1.10.0.min.js"></script>
+```
+
+--
+
+```xml
+<script src="js/handlebars.js"></script>
+```
+
+--
+
+```xml
+<script src="js/ember.js"></script>
+```
+
+--
+
+```xml
+<script>
+	var App = Ember.Application.create();
+
+	App.EmAvatarComponent = Ember.Component.extend({
+```
+
+--
+
+```js
+		url: function () {
+			return 'http://avatars.io/' +
+					this.get( 'service' ) + '/' +
+					this.get( 'username' );
+		}.property( 'username' , 'service' )
+	});
+</script>
+```
+
+--
+
+```xml
+<script type="text/x-handlebars" id="components/em-avatar">
+	<img {{bind-attr src=url}} />
+</script>
+```
+
+--
+
+```
+<script type="text/x-handlebars">
+	{{em-avatar service="twitter" username="leggetter"}}
+</script>
+```
+
+http://jsbin.com/fexawujibe/2/edit?html,output
+
+???
+
+Sorry - no demo. You get the idea.
+
 ---
 
-### KnockoutJS
-
----
+class: code-reveal
 
 ### ReactJS
+
+--
+
+```xml
+<script src="js/react.js"></script>
+<script src="js/JSXTransformer.js"></script>
+```
+
+--
+
+```xml
+<script type="text/jsx">
+/** @jsx React.DOM */
+```
+
+--
+
+```js
+var ReAvatar = React.createClass({
+	render: function() {
+		return (
+			<img src={"http://avatars.io/" +
+					this.props.service + "/" +
+					this.props.username} />
+		);
+	}
+});
+```
+
+--
+
+```js
+React.renderComponent(
+	<ReAvatar service="twitter" username="leggetter" />,
+	document.querySelector('re-avatar')
+);
+</script>
+```
+
+--
+
+```xml
+<re-avatar />
+```
+
+--
+
+<div style="text-align: center; margin-top: 20px;">
+	<re-avatar />
+</div>
+
+---
+
+### Many More...
+
+* [KnockoutJS Components](http://knockoutjs.com/documentation/component-overview.html)
+* [Backbone components](https://github.com/malroc/backbone-component)
+* [Backbone with React components](https://github.com/magalhas/backbone-react-component)
+* [CanJS components](http://canjs.com/guides/Components.html)
+
+And...
+
+
+---
+
+background-image: url(img/layers-of-polymer.png)
+class: trans-head, center
+
+---
+
+class: code-reveal
+
+## Polymer
+
+```xml
+<script src="webcomponentsjs/webcomponents.min.js"></script>
+<link rel="import" href="polymer/polymer.html">
+```
+
+--
+
+```xml
+<polymer-element name="po-avatar" attributes="service username">
+```
+
+--
+
+```xml
+	<template>
+		<img src="http://avatars.io/{{service}}/{{username}}" />
+	</template>
+```
+
+--
+
+```xml
+	<script>
+		Polymer('po-avatar', {});
+	</script>
+</polymer-element>
+```
+
+--
+
+```xml
+<po-avatar service="facebook" username="leggetter" />
+```
+
+--
+
+<div style="text-align: center; margin-top: 30px;">
+	<po-avatar service="facebook" username="leggetter" />
+</div>
+
+---
+
+class: center
+
+## Who's Building Componentised Web Apps now?
+
+--
+
+* Angular
+* Ember
+* Backbone
+* Knockout
+* React
+* Web Components with Polyfills
+* Polymer
+
+## **You** probably are already
 
 ---
 

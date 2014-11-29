@@ -55,6 +55,7 @@
       }
       .inverse.section-start h1 {
         color: #a6e22e;
+        text-shadow: 0 0 20px #333;
       }
 
       .left-code-col {
@@ -364,6 +365,77 @@
         <span id="service"></span>
       </div>
     </template>
+
+    <!-- Angular -->
+
+    <script src="js/angular.min.js"></script>
+    <script>
+      angular.module('demo', [])
+      .directive('ngAvatar', function () {
+        return {
+          restrict:"AEC",
+          scope: {
+            service: '@',
+            username: '@'
+          },
+          template: '<img src="http://avatars.io/{{service}}/{{username}}" />'
+        };
+      });
+    </script>
+
+    <!-- Ember -->
+
+    <!--script src="js/jquery-1.10.0.min.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/ember.js"></script>
+    <script>
+      var App = Ember.Application.create();
+
+      App.Router.reopen({
+        location: 'none'
+      });
+
+      App.MyAvatarComponent = Ember.Component.extend({
+        url: function () {
+          return 'http://avatars.io/' + this.get( 'service' ) + '/' + this.get( 'username' );
+        }.property( 'username' , 'service' )
+      });
+    </script>
+
+    <script type="text/x-handlebars" id="components/my-avatar">
+      <img {{bind-attr src=url}} />
+    </script-->
+
+    <!-- ReactJS -->
+    <script src="js/react.js"></script>
+    <script src="js/JSXTransformer.js"></script>
+    <script type="text/jsx">
+    /** @jsx React.DOM */
+    var ReAvatar = React.createClass({
+      render: function() {
+        return (
+          <img
+          src={"http://avatars.io/" + this.props.service + "/" + this.props.username} />
+        );
+      }
+    });
+    React.renderComponent(
+      <ReAvatar service="twitter" username="leggetter" />,
+      document.querySelector('re-avatar')
+    );
+    </script>
+
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <polymer-element name="po-avatar" attributes="service username">
+      <template>
+        <img src="http://avatars.io/{{service}}/{{username}}" />
+      </template>
+
+      <script>
+        Polymer('po-avatar', {});
+      </script>
+    </polymer-element>
 
     <script src="js/demos.js"></script>
   </body>
