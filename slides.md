@@ -1447,7 +1447,7 @@ class: inverse
 
 --
 
-* **Web Components of the future!**
+* **Web Components are the future!**
 
 ???
 
