@@ -3,60 +3,8 @@
   <head>
     <title>Why you should be using Web Components. And How.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="./bower_components/pusher-remark-themes/theme.css" />
     <style type="text/css">
-      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-      body { font-family: 'Droid Serif'; }
-      h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
-        font-weight: normal;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-      .inverse a, .inverse a:visited {
-        color: #a6e22e;
-        text-decoration: none;
-      }
-
-      .remark-slide-content {
-        background-size: contain;
-      }
-
-      ul {
-        display: block;
-        margin: auto;
-        text-align: left;
-      }
-
-      li {
-        line-height: 40px;
-      }
-
-      button {
-        border-radius: 5px;
-        width: 40%;
-        font-size: 25px;
-        margin: auto;
-      }
-
-      .remark-slide-content {
-        font-size: 30px;
-      }
-
-      .inverse {
-        background: #272822;
-        color: #f4f4f4;
-        text-shadow: 0 0 20px #333;
-      }
-      .inverse h1, .inverse h2 {
-        color: #f3f3f3;
-        line-height: 0.8em;
-      }
-      .inverse.section-start h1 {
-        color: #a6e22e;
-        text-shadow: 0 0 20px #333;
-      }
 
       .left-code-col {
         width: 80%;
@@ -70,14 +18,7 @@
         float: left;
         clear: right;
         text-align: center;
-        /*height: 60%;*/
       }
-
-      /*.single-right-example-col {
-        width: auto;
-        float: none;
-        clear: none;
-      }*/
 
       .right-example-col:before {    /* create a full-height inline block pseudo=element */
         content: ' ';
@@ -117,15 +58,6 @@
         clear: both;
       }
 
-      code {
-        -moz-border-radius: 5px;
-        -web-border-radius: 5px;
-        background: #e7e8e2;
-        border-radius: 5px;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-      .remark-code-line-highlighted     { background-color: #373832; }
-
       .native-components {
         font-size: 20px;
       }
@@ -149,28 +81,6 @@
         text-align: left;
       }
 
-      .code-reveal pre {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-
-      .code-reveal pre code {
-        border-radius: 0;
-        /*padding-bottom: 0 !important;
-        padding-top: 0 !important;*/
-      }
-
-      .trans-head h1,
-      .trans-head h2,
-      .trans-head h3,
-      .trans-code pre > *,
-      .trans-all > * {
-        background-color: rgba(0,0,0,0.6) !important;
-        padding: 20px 25px;
-        border-radius: 5px;
-        color: white;
-      }
-
       .remark-slide-number {
         bottom: 12px;
         opacity: 0.5;
@@ -178,19 +88,6 @@
         right: 20px;
         font-size: 20px;
       }
-
-      /*.final {
-        background-size: contain;
-        color: #f4f4f4;
-        text-shadow: 0 0 20px #333;
-      }
-
-      .final > * {
-        background: #272822;
-        background-color: rgba(0,0,0,0.6) !important;
-        padding: 10px;
-        list-style-position: inside;
-      }*/
 
       .stats table {
         font-size: 20px;
@@ -332,6 +229,10 @@
         background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
         background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);*/
       }
+      
+      .fixed-ul ul {
+        width: 100%;
+      }
     </style>
   </head>
   <body>
@@ -341,7 +242,6 @@
     <script type="text/javascript">
       var slideshow = remark.create({
         sourceUrl: 'slides.md',
-        highlightStyle: 'monokai',
         highlightLanguage: 'remark',
         navigation: {
           scroll: false,

@@ -1,33 +1,22 @@
-class: inverse, center, middle
+name: lblue
+layout: true
 
-# Why you should be using
-# Web Components Now.
-# And How.
+class: bg-light, center, middle
 
-<span style="position: absolute; left: 1em; bottom: 2em;">
-	Phil [@leggetter](https://twitter.com/leggetter)
-</span>
+---
 
-<span style="position: absolute; right: 1em; bottom: 2em;">
-	<a href="https://twitter.com/hashtag/dunddd?f=realtime&src=hash">#DunDDD</a>
-</span>
+class: title
+
+# Why you should be using Web Components Now. And How.
+
+* <span class="speaker">Phil @leggetter</span>
+* <span class="speaker-job-title">Head of Evangelism</span>
+* <span class="speaker-pusher-logo"></span>
 
 ???
 
-* Slide tweak to the advertised title. Added "Now".
 
 ---
-
-class: inverse, center, middle
-
-## Phil [@leggetter](https://twitter.com/leggetter)
-## "Developer Evangelist"
-## [@BladeRunnerJS](https://twitter.com/bladerunnerjs)
-## Love Realtime Tech & Web
-
----
-
-class: inverse, center, section-start
 
 # What we'll cover
 
@@ -45,13 +34,11 @@ class: inverse, center, section-start
 
 ---
 
-class: inverse, center, middle, section-start
+class: bg-dark
 
 # What are Web Components?
 
 ---
-
-class: center, middle
 
 # What are Web Components?
 
@@ -67,7 +54,13 @@ class: center, middle
 
 ---
 
-class: native-components, middle, center
+class: bg-dark
+
+# Custom Elements
+
+---
+
+class: native-components, wide, long
 
 ## Right Now - Elements
 
@@ -133,7 +126,7 @@ They all look the same
 
 ---
 
-class: native-components, middle, center
+class: native-components, wide
 
 ## HTML5 Elements
 
@@ -181,6 +174,8 @@ Embedded content e.g. `audio`, `canvas`, `svg`, `math`
 
 ---
 
+class: wide, long
+
 ## Elements - Structure & Meaning
 
 ```xml
@@ -220,7 +215,7 @@ Embedded content e.g. `audio`, `canvas`, `svg`, `math`
 ---
 
 background-image: url(img/gmail.png)
-class: center, middle, trans-head
+class: center, middle, trans-h
 
 ## Elements in "apps"
 
@@ -231,7 +226,7 @@ class: center, middle, trans-head
 ---
 
 background-image: url(img/gmail-elements.png)
-class: center, middle, trans-head
+class: trans-h
 
 ## Elements. Arrrgghhh!
 
@@ -241,13 +236,14 @@ class: center, middle, trans-head
 
 ---
 
-class: inverse, section-start, middle, center
+class: top
 
-# The Solution: Custom Elements
+# The Solution:
+## &lt;Custom Elements /&gt;
 --
 
-### More than just markup
-### IMHO the most important part of Web Components
+* More than just markup
+* IMHO the most important part of Web Components
 
 ???
 
@@ -256,7 +252,7 @@ class: inverse, section-start, middle, center
 
 ---
 
-class: code-reveal
+class: code-reveal, top, long, wide
 
 ## Custom Elements: A new Gmail
 
@@ -309,6 +305,8 @@ class: code-reveal
 
 ---
 
+class: wide
+
 ## Start Simple - An Avatar
 
 .left-code-col[
@@ -353,7 +351,7 @@ class: code-reveal
 
 ---
 
-class: code-reveal
+class: code-reveal, top, wide
 
 ## Custom Elements
 
@@ -372,9 +370,14 @@ var MyAvatarPrototype = Object.create(HTMLElement.prototype);
 
 ```js
 MyAvatarPrototype.createdCallback = function() {
-	var username = this.getAttribute('username'),
-	service = this.getAttribute('service'),
-	url = 'http://avatars.io/' + service + '/' + username;
+	var username = this.getAttribute('username');
+	var service = this.getAttribute('service');
+```
+
+--
+
+```js
+	var url = 'http://avatars.io/' + service + '/' + username;
 ```
 
 --
@@ -405,6 +408,8 @@ Define your own elements.
 * Note: `my-` prefix
 
 ---
+
+class: wide
 
 ## `<my-avatar />`
 
@@ -450,7 +455,7 @@ Define your own elements.
 
 ---
 
-class: code-reveal
+class: code-reveal, wide, top
 
 ## Custom Elements - Extending
 
@@ -534,7 +539,7 @@ function createPhils() {
 ---
 
 background-image: url(img/why-custom-elements.png)
-class: middle, center, trans-head
+class: bg-contain, trans-h
 
 ## Why Custom Elements?
 
@@ -547,7 +552,7 @@ class: middle, center, trans-head
 
 ---
 
-class: inverse, section-start, middle, center
+class: bg-dark
 
 # Templates
 
@@ -561,7 +566,6 @@ class: inverse, section-start, middle, center
 ---
 
 background-image: url(img/template-chooser.png)
-class: trans-code, middle
 
 ```xml
 <script type="text/x-handlebars-template">
@@ -581,7 +585,7 @@ class: trans-code, middle
 	* XSS vulnerable
 ---
 
-class: code-reveal, container
+class: code-reveal, container, wide, top, long
 
 ## HTML Templates <button data-action="createAvatar">Create Avatar</button>
 
@@ -653,16 +657,20 @@ class: middle, center
 
 ---
 
-class: inverse, section-start, center, middle
+class: bg-dark
 
 # Shadow DOM
 ## DOM/CSS "scoping" / protection
 
 ---
 
-## Shadow DOM - Problems is solves
+class: top
+
+## Shadow DOM - Problems it solves
 
 --
+
+class: wide
 
 .left-code-col[
 ```xml
@@ -708,7 +716,7 @@ Global DOM <br /> e.g. `id` attributes
 
 ---
 
-class: code-reveal, container
+class: code-reveal, container, wide, top, long
 
 ## Shadow DOM - In Action <button data-action="createCraig">Create Craig</button>
 
@@ -735,8 +743,7 @@ var MyAvatarShadowPrototype = Object.create(HTMLElement.prototype);
 MyAvatarShadowPrototype.createdCallback = function() {
 	// get attributes & build url
 
-	var content =
-		document.querySelector( '#my-avatar-shadow-tmpl' ).content;
+	var content = document.querySelector( '#my-avatar-shadow-tmpl' ).content;
 ```
 
 --
@@ -778,13 +785,15 @@ class: middle, center
 
 ---
 
-class: inverse, section-start, middle, center
+class: bg-dark
 
 # HTML Imports
 
 ## Loading & Dependency Management
 
 ---
+
+class: top
 
 ## HTML Imports - Example
 
@@ -809,7 +818,7 @@ class: inverse, section-start, middle, center
 
 ---
 
-class: code-reveal
+class: code-reveal, top, wide, long
 
 ## HTML Imports - Composition
 
@@ -852,6 +861,8 @@ class: code-reveal
 
 ---
 
+class: top
+
 ## HTML Imports - Composition Demo
 
 ```xml
@@ -870,7 +881,7 @@ class: code-reveal
 
 ## HTML Imports - Gotchas / Patterns!
 
-### Get & use `document` from the `currentScript`
+#### Get & use `document` from the `currentScript`
 
 ```
 ( function( currentScript ) {
@@ -880,7 +891,7 @@ class: code-reveal
 } )( document._currentScript || document.currentScript );
 ```
 
-### `importNode` and not `cloneNode` for Template
+#### `importNode` and not `cloneNode` for Template
 
 ```js
 // Note: use ownerDoc
@@ -902,7 +913,7 @@ class: center, middle
 
 ---
 
-class: inverse, section-start, middle, center
+class: bg-dark
 
 # State of Native Support
 
@@ -959,7 +970,7 @@ class: stats
 ---
 
 background-image: url(img/ie-status.png)
-class: trans-head, center
+class: trans-h, center
 
 ## Internet Explorer
 
@@ -971,7 +982,7 @@ There's hope
 ---
 
 background-image: url(img/safari-logo.png)
-class: trans-head, center, middle
+class: trans-h, center, middle
 
 # Safari?
 
@@ -1029,12 +1040,14 @@ http://webcomponents.org/polyfills
 
 ---
 
-class: inverse, section-start, middle, center
+class: bg-dark
 
 # Componentised Web Apps now
 
 
 ---
+
+class: top
 
 ## Componentised Web Apps now - questions?
 
@@ -1062,7 +1075,7 @@ class: inverse, center, middle, section-start
 
 ---
 
-class: code-reveal
+class: code-reveal, top, long
 
 ### AngularJS
 
@@ -1128,7 +1141,7 @@ angular.module('demo', [])
 
 ---
 
-class: code-reveal
+class: code-reveal, top, long
 
 ### EmberJS
 
@@ -1195,7 +1208,7 @@ Sorry - no demo. You get the idea.
 
 ---
 
-class: code-reveal
+class: code-reveal, top, long, wide
 
 ### ReactJS
 
@@ -1264,7 +1277,7 @@ And...
 ---
 
 background-image: url(img/layers-of-polymer.png)
-class: trans-head, center
+class: trans-h, center
 
 ???
 
@@ -1273,7 +1286,7 @@ class: trans-head, center
 
 ---
 
-class: code-reveal
+class: code-reveal, top, wide
 
 ## Polymer
 
@@ -1319,7 +1332,7 @@ class: code-reveal
 
 ---
 
-class: center
+class: top, long, wide
 
 ## Who's Building Componentised Web Apps now?
 
@@ -1343,7 +1356,7 @@ vs.
 
 ---
 
-class: middle, center, trans-all, inverse
+class: trans-all
 background-image: url(img/poly-mail.png)
 
 ## Examples
@@ -1356,13 +1369,11 @@ background-image: url(img/poly-mail.png)
 
 ---
 
-class: inverse, section-start, middle center
+class: bg-dark
 
 # Why Web Components are the future!
 
 ---
-
-class: center, middle
 
 ## You're already building componentised web apps
 
@@ -1370,11 +1381,17 @@ class: center, middle
 
 ---
 
+class: wide, long, top
+
 ## Trends
+
+--
 
 ### Libraries
 
 * Alignment toward Web Components
+
+--
 
 ### Browser Vendors
 
@@ -1426,7 +1443,7 @@ class: middle, center
 
 ---
 
-class: inverse
+class: top, fixed-ul, wide, long
 
 ## Summary
 
@@ -1439,7 +1456,7 @@ class: inverse
 
 --
 
-* *Can* & *are* building componentised web apps now
+* You *can* & *are* building componentised web apps now
 
 --
 
@@ -1456,9 +1473,14 @@ class: inverse
 
 ---
 
-class: inverse, center, middle
+class: title
 
-# Thanks
+# Why you should be using Web Components Now. And How.
 
-## Phil [@leggetter](https://twitter.com/leggetter)
-## [https://github.com/leggetter/web-components-now](https://github.com/leggetter/web-components-now)
+## Questions?
+
+[leggetter.github.io/web-components-now](leggetter.github.io/web-components-now)
+
+* <span class="speaker">Phil @leggetter</span>
+* <span class="speaker-job-title">Head of Evangelism</span>
+* <span class="speaker-pusher-logo"></span>
