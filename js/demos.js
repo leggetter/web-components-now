@@ -105,7 +105,7 @@ MyAvatarTmplPrototype.updateEl = function() {
 
 MyAvatarTmplPrototype.createdCallback = function() {
   var content = document.querySelector( '#my-avatar-template' ).content;
-  this.el = content.cloneNode( true );
+  this.el = document.importNode( content, true );
   this.appendChild( this.el );
   this.updateEl();
 };
@@ -146,7 +146,7 @@ MyAvatarShadowPrototype.createdCallback = function() {
   var content = document.querySelector( '#my-avatar-shadow-tmpl' ).content;
 
   this.shadow = this.createShadowRoot();
-  this.shadow.appendChild( content.cloneNode( true ) );
+  this.shadow.appendChild( document.importNode( content, true ) );
 
   this.updateEl();
 };

@@ -158,7 +158,7 @@ Form improvements e.g. `meter`, `datalist`, `keygen`, `output`
 ]
 
 .right-column-3[
-<video preload="metadata" style="height: 200px;">
+<video preload="metadata" autoplay muted loop style="height: 200px;">
 	<source src="assets/dizzy.mp4" type="video/mp4">
 	<source src="assets/dizzy.webm" type="video/webm">
 	<source src="assets/dizzy.ogv" type="video/ogg">
@@ -545,6 +545,7 @@ class: bg-contain, trans-h
 
 ???
 
+* mutation observers - observe changes in the DOM in various ways
 * declarative and readable
 * common way to extend
 * reusable
@@ -616,7 +617,7 @@ MyAvatarTmplPrototype.createdCallback = function() {
 
 ```js
 	var content = document.querySelector( '#my-avatar-template' ).content;
-	var el = content.cloneNode( true );
+	var el = document.importNode( content, true );
 ```
 
 --
@@ -646,7 +647,7 @@ class: middle, center
 * Libraries → Native
 * Native benefits
 * Document fragment = lightweight
-* Inert until until cloned/used
+* Inert until cloned/used
 
 ???
 
@@ -750,7 +751,7 @@ MyAvatarShadowPrototype.createdCallback = function() {
 
 ```js
 	this.shadow = this.createShadowRoot();
-	this.shadow.appendChild( content.cloneNode( true ) );
+	this.shadow.appendChild( document.importNode( content, true ) );
 ```
 
 --
@@ -899,6 +900,11 @@ var content = ownerDoc.querySelector( '#my-template' );
 
 var clone = ownerDoc.importNode( content, true );
 ```
+
+???
+
+* `currentScript` -
+Returns the <script> element whose script is currently being processed
 
 ---
 
@@ -1443,7 +1449,7 @@ class: middle, center
 
 ---
 
-class: top, fixed-ul, wide, long
+class: top, fixed-ul, wide, long, bg-dark
 
 ## Summary
 
