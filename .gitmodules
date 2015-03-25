@@ -1,3 +1,6 @@
 [submodule "dunddd-2014"]
 	path = dunddd-2014
 	url = https://github.com/leggetter/web-components-now.git
+[submodule "devweek-2015"]
+	path = devweek-2015
+	url = https://github.com/leggetter/web-components-now.git
