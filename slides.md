@@ -685,6 +685,46 @@ class: bg-dark
 
 ---
 
+## Shadow DOM SubTrees
+
+* Light DOM
+* Shadow DOM
+* Composed (rendered) DOM
+
+---
+
+### Light DOM
+
+```xml
+<my-custom-element>
+  <q>Hello World</q> <!-- part of my-custom-element's light DOM -->
+</my-custom-element>
+```
+
+---
+
+### Shadow DOM
+
+```xml
+#document-fragment
+  <!-- everything in here is my-custom-element's shadow DOM -->
+  <span>People say: <content></content></span>
+  <footer>sometimes</footer>
+```
+
+---
+
+### Rendered DOM
+
+```xml
+<my-custom-element>
+  <span>People say: <q>Hello World</q></span>
+  <footer>sometimes</footer>
+</my-custom-element>
+```
+
+---
+
 class: top
 
 ## Shadow DOM - Problems it solves
@@ -874,7 +914,7 @@ class: code-reveal, top, wide, long
 		// Get template, createShadowRoot etc.
 	};
 
-	document.registerElement('dunddd-organisers', {
+	document.registerElement('team-pusher', {
 		prototype: TeamPusherPrototype
 	});
 </script>
@@ -900,9 +940,22 @@ class: top
 
 ---
 
-## HTML Imports - Gotchas / Patterns!
+class: center, middle
 
-#### Get & use `document` from the `currentScript`
+# Why Use HTML Imports?
+
+* Bundle JS/HTML/CSS → single URL
+* Basic dependency management
+	* Sharing & reuse
+* Supports composition
+
+---
+
+# HTML Imports - Gotchas / Patterns!
+
+---
+
+### Get & use `document` from the `currentScript`
 
 ```
 ( function( currentScript ) {
@@ -912,7 +965,9 @@ class: top
 } )( document._currentScript || document.currentScript );
 ```
 
-#### `importNode` and *NOT* `cloneNode` for Template
+---
+
+### `importNode` and *NOT* `cloneNode` for Template
 
 ```js
 // Note: use ownerDoc
@@ -928,14 +983,15 @@ Returns the &lt;script&gt; element whose script is currently being processed
 
 ---
 
-class: center, middle
+### You can't `<link>` into the Shadow DOM
 
-# Why Use HTML Imports?
+```xml
+<template>
+	<link rel="stylesheet" href="path/to/style.css" />
+</template>
+```
 
-* Bundle JS/HTML/CSS → single URL
-* Basic dependency management
-	* Sharing & reuse
-* Supports composition
+???
 
 ---
 
