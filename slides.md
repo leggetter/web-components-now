@@ -1809,6 +1809,7 @@ class: top, fixed-ul, wide, long, bg-dark
 * [Google Material Design](http://www.google.com/design/spec/material-design/introduction.html)
 * [HTML Template Chooser](http://garann.github.io/template-chooser/)
 * [IE UserVoice forum](https://wpdev.uservoice.com/forums/257854-internet-explorer-platform/filters/top)
+* [Source for these slides](https://github.com/leggetter/web-components-now/tree/devweek-2015)
 
 ---
 
