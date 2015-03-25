@@ -5,6 +5,11 @@ class: bg-light, center, middle
 
 ---
 
+class: bg-contain
+background-image: url(./img/devweek-web-components.png)
+
+---
+
 class: title
 
 # Why you should be using Web Components Now. And How.
