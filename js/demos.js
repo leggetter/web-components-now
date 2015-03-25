@@ -161,10 +161,47 @@ document.registerElement('my-avatar-shadow', {
 
 /*****************************/
 
-function createCraig( e ) {
+function createDevWeek( e ) {
   var el = e.srcElement || e.target;
   var avatar = document.createElement( 'my-avatar-shadow' );
   avatar.setAttribute( 'service', 'twitter' );
-  avatar.setAttribute( 'username', 'CAMMURPHY' );
+  avatar.setAttribute( 'username', 'DevWeek' );
   el.parentNode.replaceChild(avatar, el);
 }
+
+/*****************************/
+
+var CustomEventPrototype = Object.create(HTMLElement.prototype);
+
+CustomEventPrototype.createdCallback = function() {   
+  var content = document.querySelector( '#custom-event-tmpl' ).content;
+
+  this.shadow = this.createShadowRoot();
+  this.shadow.appendChild( document.importNode( content, true ) );
+  
+  this.img = this.shadow.querySelector('img');
+  
+  this.addEventListener('click', function() {
+    this.img.classList.toggle('animated');
+    this.img.classList.toggle('rubberBand');
+    var customEvent = new CustomEvent('cheese');
+    this.dispatchEvent(customEvent);
+  }.bind(this));
+};
+
+CustomEventPrototype.startSpin = function() {
+  this.img.classList.toggle('spin');
+};
+
+CustomEventPrototype.stopSpin = function() {
+  this.img.classList.toggle('spin');
+};
+
+document.registerElement('custom-event-ex', {
+  prototype: CustomEventPrototype
+});
+
+var customEl = document.getElementById('my_custom_ev');
+customEl.addEventListener('cheese', function() {
+  alert('cheese fired!');
+});

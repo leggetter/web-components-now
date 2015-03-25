@@ -246,7 +246,8 @@
         navigation: {
           scroll: false,
 
-        }
+        },
+        ratio: "4:3"
       });
     </script>
 
@@ -278,6 +279,26 @@
         <span id="username"></span>
         <span id="service"></span>
       </div>
+    </template>
+    
+    <template id="custom-event-tmpl">
+      <style>
+        img {
+          width: 100px;
+          height: 100px;
+        }
+        img.spin {
+          width: 100px;
+          height: 100px;
+          -webkit-animation:spin 4s linear infinite;
+          -moz-animation:spin 4s linear infinite;
+          animation:spin 4s linear infinite;
+        }
+        @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+        @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+        @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+      </style>
+      <img src="./img/smile.png" />
     </template>
 
     <!-- Angular -->
@@ -324,7 +345,6 @@
     <script src="js/react.js"></script>
     <script src="js/JSXTransformer.js"></script>
     <script type="text/jsx">
-    /** @jsx React.DOM */
     var ReAvatar = React.createClass({
       render: function() {
         return (
@@ -333,7 +353,7 @@
         );
       }
     });
-    React.renderComponent(
+    React.render(
       <ReAvatar service="twitter" username="leggetter" />,
       document.querySelector('re-avatar')
     );

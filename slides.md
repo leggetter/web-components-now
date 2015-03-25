@@ -665,6 +665,21 @@ class: bg-dark
 
 ---
 
+## Shadow DOM - Already using it
+
+<video preload="metadata" autoplay muted loop style="height: 200px;">
+	<source src="assets/dizzy.mp4" type="video/mp4">
+	<source src="assets/dizzy.webm" type="video/webm">
+	<source src="assets/dizzy.ogv" type="video/ogg">
+</video>
+
+???
+
+* Chrome Options
+* Show User Agent Shadow DOM
+
+---
+
 class: top
 
 ## Shadow DOM - Problems it solves
@@ -719,7 +734,7 @@ Global DOM <br /> e.g. `id` attributes
 
 class: code-reveal, container, wide, top, long
 
-## Shadow DOM - In Action <button data-action="createCraig">Create Craig</button>
+## Shadow DOM - In Action <button data-action="createDevWeek">Create DevWeek</button>
 
 --
 
@@ -823,7 +838,7 @@ class: code-reveal, top, wide, long
 
 ## HTML Imports - Composition
 
-`dunddd-organisers.html`
+`team-pusher.html`
 
 --
 
@@ -834,13 +849,13 @@ class: code-reveal, top, wide, long
 --
 
 ```xml
-<template id="dunddd-organisers-tmpl">
+<template id="team-pusher-tmpl">
 	<style>...</style>
 
-	<my-avatar-import service="twitter" username="argibson" />
-	<my-avatar-import service="twitter" username="CAMMURPHY" />
-	<my-avatar-import service="twitter" username="colinmackay" />
-	<my-avatar-import service="twitter" username="andycobley" />
+	<my-avatar-import service="twitter" username="maxthelion" />
+	<my-avatar-import service="twitter" username="copypastaa" />
+	...
+	<my-avatar-import service="twitter" username="leggetter" />
 </template>
 ```
 
@@ -848,14 +863,14 @@ class: code-reveal, top, wide, long
 
 ```xml
 <script>
-	var DunDDDOrganisersPrototype = Object.create(HTMLElement.prototype);
+	var TeamPusherPrototype = Object.create(HTMLElement.prototype);
 
-	DunDDDOrganisersPrototype.createdCallback = function() {
+	TeamPusherPrototype.createdCallback = function() {
 		// Get template, createShadowRoot etc.
 	};
 
 	document.registerElement('dunddd-organisers', {
-		prototype: DunDDDOrganisersPrototype
+		prototype: TeamPusherPrototype
 	});
 </script>
 ```
@@ -867,16 +882,16 @@ class: top
 ## HTML Imports - Composition Demo
 
 ```xml
-<link rel="import" href="assets/dunddd-organisers.html" />
+<link rel="import" href="assets/team-pusher.html" />
 
-<dunddd-organisers></dunddd-organisers>
+<team-pusher></team-pusher>
 ```
 
 --
 
-<link rel="import" href="assets/dunddd-organisers.html" />
+<link rel="import" href="assets/team-pusher.html" />
 
-<dunddd-organisers></dunddd-organisers>
+<team-pusher></team-pusher>
 
 ---
 
@@ -892,7 +907,7 @@ class: top
 } )( document._currentScript || document.currentScript );
 ```
 
-#### `importNode` and not `cloneNode` for Template
+#### `importNode` and *NOT* `cloneNode` for Template
 
 ```js
 // Note: use ownerDoc
@@ -904,7 +919,7 @@ var clone = ownerDoc.importNode( content, true );
 ???
 
 * `currentScript` -
-Returns the <script> element whose script is currently being processed
+Returns the &lt;script&gt; element whose script is currently being processed
 
 ---
 
@@ -933,7 +948,7 @@ class: stats
 	<thead>
 		<tr>
 			<td></td>
-			<td>Chrome 42</td>
+			<td>Chrome 41</td>
 			<td>Firefox 36</td>
 			<td>Safari 8</td>
 			<td>IE 10</td>
@@ -964,7 +979,7 @@ class: stats
 		<tr>
 			<td>HTML Imports</td>
 			<td class="yes">Y</td>
-			<td class="yes">Y</td>
+			<td class="maybe">N*</td>
 			<td class="no">N</td>
 			<td class="no">N</td>
 		</tr>
@@ -973,6 +988,18 @@ class: stats
 
 <small>* Can be enabled in config</small>
 
+???
+
+* Opera uses same rendering engine as Chrome so has similar support
+
+---
+
+## Firefox
+
+> Mozilla will not ship an implementation of HTML Imports. We expect that once JavaScript modules ... is shipped, the way we look at this problem will have changed.
+
+[https://hacks.mozilla.org/2014/12/mozilla-and-web-components/](https://hacks.mozilla.org/2014/12/mozilla-and-web-components/)
+
 ---
 
 background-image: url(img/ie-status.png)
@@ -980,10 +1007,20 @@ class: trans-h, center
 
 ## Internet Explorer
 
+---
+
+template: lblue
+class: bg-video
+
+<video id="video" autoplay="false" loop="false" controls="true">
+	<source src="/img/ie-uservoice.mp4" type="video/mp4">
+</video>
+
+<a style="position: absolute; left: 5%; top: 5%; color: blue; z-index: 200;" href="https://wpdev.uservoice.com/forums/257854-internet-explorer-platform/filters/top">IE UserVoice</a>
 
 ???
 
-There's hope
+* Positions 2, 3, 5 & 6
 
 ---
 
@@ -992,9 +1029,21 @@ class: trans-h, center, middle
 
 # Safari?
 
+???
+
+* Did have Shadow DOM support
+* Removed, but Eric Bidleman says it may be coming back
+
 ---
 
-class: stats
+background-image: url(img/lost.gif)
+class: bg-cover
+
+## All is not Lost
+
+---
+
+class: stats, long
 
 ## Browsers - with Polyfills
 
@@ -1044,6 +1093,10 @@ http://webcomponents.org/polyfills
 
 <small>* <a href="http://webcomponents.org/polyfills/shadow-dom/#known-limitations">Shadow DOM Polyfill limitations</a></small>
 
+???
+
+Shadow DOM: CSS encapsulation limited etc.
+
 ---
 
 class: bg-dark
@@ -1078,6 +1131,10 @@ class: inverse, center, middle, section-start
 
 # JavaScript
 # Libraries & Frameworks
+
+???
+
+* Because they all have a concept called "Components"
 
 ---
 
@@ -1210,7 +1267,9 @@ http://jsbin.com/fexawujibe/2/edit?html,output
 
 ???
 
-Sorry - no demo. You get the idea.
+* Sorry - no demo. You get the idea.
+* http://jsbin.com/fexawujibe/2/edit?html,output
+
 
 ---
 
@@ -1229,12 +1288,6 @@ class: code-reveal, top, long, wide
 
 ```xml
 <script type="text/jsx">
-/** @jsx React.DOM */
-```
-
---
-
-```js
 var ReAvatar = React.createClass({
 	render: function() {
 		return (
@@ -1278,6 +1331,10 @@ React.renderComponent(
 * [CanJS components](http://canjs.com/guides/Components.html)
 
 And...
+
+???
+
+* KO introduced components in 3.2
 
 
 ---
@@ -1338,6 +1395,16 @@ class: code-reveal, top, wide
 
 ---
 
+background-image: url(img/polymer-paper-elements.png)
+class: bg-cover
+
+---
+
+background-image: url(img/md-angularjs.png)
+class: bg-cover
+
+---
+
 class: top, long, wide
 
 ## Who's Building Componentised Web Apps now?
@@ -1347,8 +1414,6 @@ class: top, long, wide
 Angular, Ember, Backbone, Knockout, React, Web Components with Polyfills, Polymer
 
 ## **You** probably are already
-
---
 
 ```xml
 <ng-avatar service="twitter" username="leggetter" />
@@ -1368,10 +1433,14 @@ background-image: url(img/poly-mail.png)
 ## Examples
 
 * [From Eric's Slides](http://polymer-change.appspot.com/#19)
-	* GitHub
+	* [GitHub](https://github.com/)
 	* Chrome OS
 * [GMail built in Polymer](https://poly-mail.appspot.com/)
 * [Topeka game built in Polymer](https://www.polymer-project.org/apps/topeka/)
+
+???
+
+* GitHub time inspect element
 
 ---
 
@@ -1381,31 +1450,41 @@ class: bg-dark
 
 ---
 
-## You're already building componentised web apps
+# 1. You're already building componentised web apps
 
-### If you're not, you probably should be
+## If you're not, you probably should be
 
 ---
 
-class: wide, long, top
+# 2. Trends & Demand
 
-## Trends
+---
 
---
-
-### Libraries
+## Libraries
 
 * Alignment toward Web Components
+* Angular - Directives
+* Ember - Components
+* Knockout - Components
+* Polymer - build upon Web Components
+* Angular 2...
 
---
+---
 
-### Browser Vendors
+class: bg-cover
+background-image: url(img/angular-2-component.png)
+
+---
+
+## Browser Vendor Support
 
 * Google
-* Mozilla
-* Microsoft - previously: HTA & ASP.NET Controls
-* Apple - ?
 * Opera - uses Blink
+* Mozilla
+* Microsoft - ?
+  * previously: HTA & ASP.NET Controls
+	* In high demand on IE UserVoice
+* Apple - ?
 
 ???
 
@@ -1416,36 +1495,216 @@ class: wide, long, top
 
 ---
 
-class: middle, center
+template: lblue
+class: bg-video, em-text, trans-h
 
-## Encourages good software development
+<video id="video" autoplay="false" loop="false" controls="true">
+	<source src="/img/ie-uservoice.mp4" type="video/mp4">
+</video>
 
-* [Component-based Development](http://en.wikipedia.org/wiki/Component-based_software_engineering)
-* Encapsulation
-* Loose Coupling
-* Supports Change
-* High Cohesion
-* Reusability
+## In Demand
 
 ???
 
-* Component-based - modularity
-* Encapsulation - naturally
-* Loose coupling
-	* through component APIs
-* Change - loose coupling, encapsulation and interaction through APIs
+* Positions 2, 3, 5 & 6
+
+---
+
+class: middle, center
+
+# 3. Encourages good software development
+
+## [Component-based Development](http://en.wikipedia.org/wiki/Component-based_software_engineering)
+
+---
+
+class: long, wide
+
+## Separation of Concerns
+
+```xml
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>A new Gmail?</title>
+		<meta name="description" content="">
+	</head>
+	<body>
+
+		<header>
+			<img src="img/logo.png" alt="Google Logo" />
+			<gmail-search />
+			<gmail-account-strip />
+		</header>
+
+		<gmail-side-bar>
+			<nav is="gmail-labels"></nav>
+			<gmail-contacts />
+		</gmail-sidebar>
+		<main>
+			<nav is="gmail-categories"></nav>
+			<gmail-email-list />
+		</main>
+
+		<gmail-talk />
+	</body>
+</html>
+```
+
+???
+
+* HTML / Content, CSS / Presentation / JS Behaviour
+* We start to build our apps out of components
+* Each component does a specific thing
+* Each has its own functional concern
+
+---
+
+## Encapsulation
+
+* Shadow DOM - Style & DOM encapsulation
+* Does *NOT* offer JavaScript protection
+
+####  Hacky Custom Element
+
+<link rel="import" href="./assets/hack-test.html" />
+
+<hack-test></hack-test>
+
+???
+
+---
+
+## Loose Coupling
+
+* Custom Events
+* Element API (interface)
+* Existing messaging frameworks
+
+???
+
+* through component APIs
+
+---
+
+class: wide, long, top, code-reveal
+
+## Custom Events
+
+```xml
+<script>
+	var CustomEventPrototype = Object.create(HTMLElement.prototype);
+	CustomEventPrototype.createdCallback = function() {
+	  // Build element ...
+	  
+	  this.addEventListener('click', function() {
+	    var customEvent = new CustomEvent('cheese');
+	    this.dispatchEvent(customEvent);
+	  }.bind(this));
+	};
+
+	// ...
+```
+
+--
+
+```xml
+	var customEl = document.getElementById('my_custom_ev');
+	customEl.addEventListener('cheese', function() {
+	  alert('cheese fired!');
+	});
+</script>
+
+<custom-event-ex id="my_custom_ev"></custom-event-ex>
+```
+
+<custom-event-ex id="my_custom_ev"></custom-event-ex>
+
+---
+
+class: wide, long, top, code-reveal
+
+## Element API Attributes & Methods
+
+```xml
+<script>
+	CustomEventPrototype.startSpin = function() {
+	  this.img.classList.toggle('spin');
+	};
+	
+	CustomEventPrototype.stopSpin = function() {
+		this.img.classList.toggle('spin');
+	};
+	
+	// ...
+	
+	var spinEl = document.getElementById('spin_el');
+	spinEl.startSpin();
+	
+	// ...
+	
+	spinEl.stopSpin();
+</script>
+
+<custom-event-ex id="spin_el"></custom-event-ex>
+```
+
+<custom-event-ex id="spin_el"></custom-event-ex>
+
+---
+
+## Supports Change
+
+???
+
+* loose coupling E.G. interaction through APIs
+* Important on the Web where changes happen so fast
+
+---
+
+class: wide
+
+## Reusability
+
+```xml
+<link rel="import" href="https://some-cdn.com/my-avatar.html" />
+```
+
+???
+
+---
+
+## High Cohesion
+
+```
+myavatar.html
+├── js/script.js
+├── css/styles.css
+└── img/bg.png
+```
+
+???
+
 * Functional cohesion - everything that's related together (HTML imports)
 
 ---
 
 class: middle, center
 
-## Problems. Solved in the future?
+## Problems? Solved in the future?
 
-* HTML Imports: Vulcanize | HTTP2
+* HTML Imports
+  * Vulcanize | HTTP2
 * Shared scripts?
+	* Cache
 * Multiple versions?
-* Cross-component communication?
+* Better Cross-component communication?
+* Allow `<link>` for CSS in Shadow DOM?
+
+???
+
+* HTTP2: Loading page elements in parallel over a single TCP connection
 
 ---
 
