@@ -1799,6 +1799,19 @@ class: top, fixed-ul, wide, long, bg-dark
 
 ---
 
+## Resources
+
+* http://pusher.com - easily add realtime messaging to your apps
+* http://webcomponents.org/
+* https://www.polymer-project.org
+* [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/)
+* [Angular Material](https://material.angularjs.org/)
+* [Google Material Design](http://www.google.com/design/spec/material-design/introduction.html)
+* [HTML Template Chooser](http://garann.github.io/template-chooser/)
+* [IE UserVoice forum](https://wpdev.uservoice.com/forums/257854-internet-explorer-platform/filters/top)
+
+---
+
 class: title
 
 # Why you should be using Web Components Now. And How.
