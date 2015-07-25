@@ -123,7 +123,7 @@ document.registerElement('my-avatar-tmpl', {
 function createAvatar( e ) {
   var el = e.srcElement || e.target;
   var avatar = document.createElement( 'my-avatar-tmpl' );
-  avatar.setAttribute( 'service', 'facebook' );
+  avatar.setAttribute( 'service', 'twitter' );
   avatar.setAttribute( 'username', 'leggetter' );
   el.parentNode.replaceChild(avatar, el);
 }
@@ -161,11 +161,11 @@ document.registerElement('my-avatar-shadow', {
 
 /*****************************/
 
-function createDevWeek( e ) {
+function createForwardJS( e ) {
   var el = e.srcElement || e.target;
   var avatar = document.createElement( 'my-avatar-shadow' );
   avatar.setAttribute( 'service', 'twitter' );
-  avatar.setAttribute( 'username', 'DevWeek' );
+  avatar.setAttribute( 'username', 'ForwardJS' );
   el.parentNode.replaceChild(avatar, el);
 }
 

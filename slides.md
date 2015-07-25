@@ -5,20 +5,37 @@ class: bg-light, center, middle
 
 ---
 
-class: bg-contain
-background-image: url(./img/devweek-web-components.png)
-
----
-
 class: title
 
 # Why you should be using Web Components Now. And How.
 
 * <span class="speaker">Phil @leggetter</span>
-* <span class="speaker-job-title">Head of Evangelism</span>
+* <span class="speaker-job-title">Head of Developer Relations</span>
 * <span class="speaker-pusher-logo"></span>
 
 ???
+
+---
+
+> Web Components are an endangered species
+
+~
+
+> ...in four years, we haven’t got much to show
+
+[Christian Heilmann - July 1st, 2015](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
+
+---
+
+## The rumours about the death of Web Components have been greatly exaggerated
+
+---
+
+## As a comparison: WebSocket
+
+* [First suggested in 2008](http://www.mail-archive.com/whatwg@lists.whatwg.org/msg10222.html)
+* [Finalised in December 2011 (RFC6544)](https://tools.ietf.org/html/rfc6455)
+* ~4 Years!
 
 
 ---
@@ -26,9 +43,9 @@ class: title
 # What we'll cover
 
 * What are Web Components?
-* State of native support
-* Componentised Web Apps now
-* Why Web Components are the future!
+* The State of Web Components
+* Componentised Web Apps Now
+* Why Web Components are the Future!
 --
 
 * &hearts; [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/) &hearts;
@@ -326,16 +343,6 @@ class: wide
 
 .left-code-col[
 ```xml
-<img src="http://avatars.io/facebook/leggetter" />
-```
-]
-
-.right-example-col[
-<img src="http://avatars.io/facebook/leggetter" />
-]
-
-.left-code-col[
-```xml
 <img src="http://avatars.io/instagram/leggetter" />
 ```
 ]
@@ -351,7 +358,17 @@ class: wide
 ]
 
 .right-example-col[
-<img src="http://avatars.io/gravatar/phil@leggetter.co.uk" />
+<img src="http://avatars.io/gravatar/phil@pusher.com" />
+]
+
+.left-code-col[
+```xml
+<img src="http://api.skype.com/users/pleggetter/profile/avatar" />
+```
+]
+
+.right-example-col[
+<img src="http://api.skype.com/users/pleggetter/profile/avatar" />
 ]
 
 ---
@@ -430,16 +447,6 @@ class: wide
 
 .left-code-col[
 ```xml
-<my-avatar service="facebook" username="leggetter" />
-```
-]
-
-.right-example-col[
-<my-avatar service="facebook" username="leggetter" />
-]
-
-.left-code-col[
-```xml
 <my-avatar service="instagram" username="leggetter" />
 ```
 ]
@@ -450,12 +457,12 @@ class: wide
 
 .left-code-col[
 ```xml
-<my-avatar service="twitter" username="garyshort" />
+<my-avatar service="twitter" username="forwardjs" />
 ```
 ]
 
 .right-example-col[
-<my-avatar service="twitter" username="garyshort" />
+<my-avatar service="twitter" username="forwardjs" />
 ]
 
 ---
@@ -779,7 +786,7 @@ Global DOM <br /> e.g. `id` attributes
 
 class: code-reveal, container, wide, top, long
 
-## Shadow DOM - In Action <button data-action="createDevWeek">Create DevWeek</button>
+## Shadow DOM - In Action <button data-action="createForwardJS">Create ForwardJS</button>
 
 --
 
@@ -997,61 +1004,53 @@ Returns the &lt;script&gt; element whose script is currently being processed
 
 class: bg-dark
 
-# State of Native Support
+# The State of...
 
 ---
 
-class: stats
+## The State of Custom Elements
 
-## Browsers
+---
 
-<table>
-	<thead>
-		<tr>
-			<td></td>
-			<td>Chrome 41</td>
-			<td>Firefox 36</td>
-			<td>Safari 8</td>
-			<td>IE 10</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Custom Elements</td>
-			<td class="yes">Y</td>
-			<td class="maybe">N*</td>
-			<td class="no">N</td>
-			<td class="no">N</td>
-		</tr>
-		<tr>
-			<td>Templates</td>
-			<td class="yes">Y</td>
-			<td class="yes">Y</td>
-			<td class="yes">Y</td>
-			<td class="no">N</td>
-		</tr>
-		<tr>
-			<td>Shadow DOM</td>
-			<td class="yes">Y</td>
-			<td class="maybe">N*</td>
-			<td class="no">N</td>
-			<td class="no">N</td>
-		</tr>
-		<tr>
-			<td>HTML Imports</td>
-			<td class="yes">Y</td>
-			<td class="maybe">N*</td>
-			<td class="no">N</td>
-			<td class="no">N</td>
-		</tr>
-	</tbody>
-</table>
+## The State of `is`
 
-<small>* Can be enabled in config</small>
+> It is generally agreed that is is a ‘wart’ on the Custom Elements spec. Google has already implemented is and sees it as a stop-gap until lower-level primitives are exposed.
+
+[Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
+
+---
+
+## The State of `is` (cont.)
+
+> Right now Mozilla and Apple would rather ship a Custom Elements V1 sooner and address this problem properly in a V2 without polluting the platform with ‘warts’.
+
+[Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
 
 ???
 
-* Opera uses same rendering engine as Chrome so has similar support
+**Pros**
+
+* Allows extending the built-in features of a element that aren’t exposed as primitives
+* Give means to ‘progressively enhance’ an element
+
+**Cons**
+
+* Syntax is confusing.
+* Side-steps - missing key accessibility primitives
+* Side-steps - no way to properly extend built-in elements
+* Use-cases are limited; Shadow DOM = lose all built-in accessibility
+
+---
+
+## The State of Templates
+
+---
+
+## The State of Shadow DOM
+
+---
+
+## The State of HTML Imports
 
 ---
 
@@ -1063,37 +1062,56 @@ class: stats
 
 ---
 
-background-image: url(img/ie-status.png)
-class: trans-h, center
+## The State of Browsers
 
-## Internet Explorer
+---
+
+background-image: url(img/ie-status.png)
+class: trans-h, top
+
+## Microsoft Edge
 
 ---
 
 template: lblue
-class: bg-video
+class: trans-h
 
-<video id="video" autoplay="false" loop="false" controls="true">
-	<source src="/img/ie-uservoice.mp4" type="video/mp4">
-</video>
+<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">MS Edge: Demand</h2>
 
-<a style="position: absolute; left: 5%; top: 5%; color: blue; z-index: 200;" href="https://wpdev.uservoice.com/forums/257854-internet-explorer-platform/filters/top">IE UserVoice</a>
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/filters/top"></iframe>
 
 ???
 
-* Positions 2, 3, 5 & 6
+* Positions 2, 3, 4 & 5
 
 ---
 
 background-image: url(img/safari-logo.png)
 class: trans-h, center, middle
 
-# Safari?
+<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">Safari</h2>
+
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://lists.w3.org/Archives/Public/public-webapps/2015JulSep/0204.html"></iframe>
 
 ???
 
-* Did have Shadow DOM support
-* Removed, but Eric Bidleman says it may be coming back
+---
+
+class: trans-h
+
+<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">State of Browser Support</h2>
+
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="http://jonrimmer.github.io/are-we-componentized-yet/"></iframe>
+
+???
+
+---
+
+class: trans-h
+
+<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">State of Browser Support (cont.)</h2>
+
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="http://caniuse.com/#search=web%20components"></iframe>
 
 ---
 
@@ -1108,51 +1126,9 @@ class: stats, long
 
 ## Browsers - with Polyfills
 
-<table>
-<thead>
-<tr>
-<td></td>
-<td>Chrome 42</td>
-<td>Firefox 36</td>
-<td>Safari 8</td>
-<td>IE 10</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Custom Elements</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-</tr>
-<tr>
-<td>Templates</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-</tr>
-<tr>
-<td>Shadow DOM</td>
-<td class="yes">Y</td>
-<td class="maybe">Y*</td>
-<td class="maybe">Y*</td>
-<td class="maybe">Y*</td>
-</tr>
-<tr>
-<td>HTML Imports</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-</tr>
-</tbody>
-</table>
+![](./img/webcomponents-polyfill-browser-support.png)
 
-http://webcomponents.org/polyfills
-
-<small>* <a href="http://webcomponents.org/polyfills/shadow-dom/#known-limitations">Shadow DOM Polyfill limitations</a></small>
+https://github.com/webcomponents/webcomponentsjs#browser-support
 
 ???
 
@@ -1162,14 +1138,35 @@ Shadow DOM: CSS encapsulation limited etc.
 
 class: bg-dark
 
-# Componentised Web Apps now
+# Componentised Web Apps Now
 
+---
+
+> When we asked the very captive and elite audience of EdgeConf about Web Components, nobody raised their hand that they are using them in real products.
+
+[Christian Heilmann - July 1st, 2015](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
+
+???
+
+Question: who is using Web Components in a production app?
+In a Web Components talk, so probably not.
+
+---
+
+> People either used React or Polymer as there is still no way to use Web Components in production otherwise.
+
+[Christian Heilmann - July 1st, 2015](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
+
+???
+
+* React !== Web Components
+* Polymer is built upon Web Components
 
 ---
 
 class: top
 
-## Componentised Web Apps now - questions?
+## Componentised Web Apps Now - questions?
 
 *Should native browser support stop us thinking about building
 componentised web apps?*
@@ -1384,24 +1381,8 @@ React.renderComponent(
 
 ---
 
-### Many More...
-
-* [KnockoutJS Components](http://knockoutjs.com/documentation/component-overview.html)
-* [Backbone components](https://github.com/malroc/backbone-component)
-* [Backbone with React components](https://github.com/magalhas/backbone-react-component)
-* [CanJS components](http://canjs.com/guides/Components.html)
-
-And...
-
-???
-
-* KO introduced components in 3.2
-
-
----
-
 background-image: url(img/layers-of-polymer.png)
-class: trans-h, center
+class: trans-h bg-contain bg-white
 
 ???
 
@@ -1445,24 +1426,46 @@ class: code-reveal, top, wide
 --
 
 ```xml
-<po-avatar service="facebook" username="leggetter" />
+<po-avatar service="twitter" username="leggetter" />
 ```
 
 --
 
 <div style="text-align: center; margin-top: 30px;">
-	<po-avatar service="facebook" username="leggetter" />
+	<po-avatar service="twitter" username="leggetter" />
 </div>
 
 ---
 
-background-image: url(img/polymer-paper-elements.png)
-class: bg-cover
+class: top
 
----
+## Who's using? ...
 
-background-image: url(img/md-angularjs.png)
-class: bg-cover
+* [Angular Directives](https://docs.angularjs.org/guide/directive)
+--
+
+* [Ember Components](http://guides.emberjs.com/v1.13.0/components/)
+--
+
+* [React Components](http://facebook.github.io/react/index.html)
+--
+
+* [KnockoutJS Components](http://knockoutjs.com/documentation/component-overview.html)
+--
+
+* [Vue.js Components](http://vuejs.org/guide/index.html#Components)
+--
+
+* [Backbone Components](https://github.com/malroc/backbone-component)
+--
+
+* [CanJS Components](http://canjs.com/guides/Components.html)
+--
+
+* [Famous Components](http://famous.org/learn/components.html)
+--
+
+* Anything.JS Componenets?
 
 ---
 
@@ -1470,11 +1473,10 @@ class: top, long, wide
 
 ## Who's Building Componentised Web Apps now?
 
+Angular, Ember, Backbone, Knockout, React, Vue.js, Web Components with Polyfills, Polymer ...
 --
 
-Angular, Ember, Backbone, Knockout, React, Web Components with Polyfills, Polymer
-
-## **You** probably are already
+## **You** are!
 
 ```xml
 <ng-avatar service="twitter" username="leggetter" />
@@ -1485,23 +1487,6 @@ vs.
 ```xml
 <my-avatar service="twitter" username="leggetter" />
 ```
-
----
-
-class: trans-all
-background-image: url(img/poly-mail.png)
-
-## Examples
-
-* [From Eric's Slides](http://polymer-change.appspot.com/#19)
-	* [GitHub](https://github.com/)
-	* Chrome OS
-* [GMail built in Polymer](https://poly-mail.appspot.com/)
-* [Topeka game built in Polymer](https://www.polymer-project.org/apps/topeka/)
-
-???
-
-* GitHub time inspect element
 
 ---
 
@@ -1539,13 +1524,11 @@ background-image: url(img/angular-2-component.png)
 
 ## Browser Vendor Support
 
-* Google
-* Opera - uses Blink
-* Mozilla
-* Microsoft - ?
-  * previously: HTA & ASP.NET Controls
-	* In high demand on IE UserVoice
-* Apple - ?
+* Google &#10004;
+* Opera &#10004;
+* Mozilla &#10004;
+* Microsoft &#10004;
+* Apple &#10004;
 
 ???
 
@@ -1615,10 +1598,11 @@ class: long, wide
 
 ???
 
+* Each component addresses a separate concern
+	* a functional concern
 * HTML / Content, CSS / Presentation / JS Behaviour
 * We start to build our apps out of components
 * Each component does a specific thing
-* Each has its own functional concern
 
 ---
 
