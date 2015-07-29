@@ -46,9 +46,6 @@ class: title
 * The State of Web Components
 * Componentised Web Apps Now
 * Why Web Components are the Future!
---
-
-* &hearts; [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/) &hearts;
 
 ???
 
@@ -320,7 +317,7 @@ class: code-reveal, top, long, wide
 --
 
 ```xml
-		<gmail-talk />
+		<hangouts />
 	</body>
 </html>
 ```
@@ -605,7 +602,7 @@ class: code-reveal, container, wide, top, long
 ```xml
 <template id="my-avatar-template">
 	<style>
-		.container { background-color: cyan; }
+		.container { background-color: gold; }
 		<!-- omitted for brevity -->
 	</style>
 	<div class="container">
@@ -713,10 +710,12 @@ class: bg-dark
 ### Shadow DOM
 
 ```xml
-#document-fragment
-  <!-- everything in here is my-custom-element's shadow DOM -->
-  <span>People say: <content></content></span>
-  <footer>sometimes</footer>
+<my-custom-element>
+	#shadow-root
+	  <!-- everything in here is my-custom-element's shadow DOM -->
+	  <span>People say: <content></content></span>
+	  <footer>sometimes</footer>
+</my-custom-element>	
 ```
 
 ---
@@ -748,7 +747,7 @@ Styles <span class="container">Bleed!</span>
 ```xml
 <template id="my-avatar-tmpl">
 	<style>
-		.container { background-color: cyan; }
+		.container { background-color: gold; }
 		...
 ```
 
@@ -759,7 +758,7 @@ Styles <span class="container">Bleed!</span>
 
 .right-example-col[
 Styles <span class="container">Bleed!</span>
-<button data-action="createAvatar">Me</button>
+<my-avatar-tmpl service="twitter" username="leggetter" />
 ]
 
 --
@@ -958,7 +957,7 @@ class: center, middle
 
 ---
 
-# HTML Imports - Gotchas / Patterns!
+# Gotchas / Patterns!
 
 ---
 
@@ -998,6 +997,8 @@ Returns the &lt;script&gt; element whose script is currently being processed
 </template>
 ```
 
+![](./img/link-element-ignored-in-shadow-tree.png)
+
 ???
 
 ---
@@ -1010,43 +1011,25 @@ class: bg-dark
 
 ## The State of Custom Elements
 
----
-
-## The State of `is`
-
-> It is generally agreed that is is a ‘wart’ on the Custom Elements spec. Google has already implemented is and sees it as a stop-gap until lower-level primitives are exposed.
-
-[Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
-
----
-
-## The State of `is` (cont.)
-
-> Right now Mozilla and Apple would rather ship a Custom Elements V1 sooner and address this problem properly in a V2 without polluting the platform with ‘warts’.
-
-[Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
+* `is` - Concerns around Accessibility
 
 ???
-
-**Pros**
-
-* Allows extending the built-in features of a element that aren’t exposed as primitives
-* Give means to ‘progressively enhance’ an element
-
-**Cons**
-
-* Syntax is confusing.
-* Side-steps - missing key accessibility primitives
-* Side-steps - no way to properly extend built-in elements
-* Use-cases are limited; Shadow DOM = lose all built-in accessibility
+* Accessibility
+	* missing key accessibility primitives
+	* no way to properly extend built-in elements
 
 ---
 
-## The State of Templates
+## The State of Templates &#10004;
 
 ---
 
 ## The State of Shadow DOM
+
+* "Distribution" - inserting element content into "slots"
+* `createShadowRoot(closed | open)` - protecting the `element.shadowRoot`
+* "Shadow piercing combinators" - `.foo >>> div { color: red }`
+* CSS Custom Properties
 
 ---
 
@@ -1059,6 +1042,10 @@ class: bg-dark
 > Mozilla will not ship an implementation of HTML Imports. We expect that once JavaScript modules ... is shipped, the way we look at this problem will have changed.
 
 [https://hacks.mozilla.org/2014/12/mozilla-and-web-components/](https://hacks.mozilla.org/2014/12/mozilla-and-web-components/)
+
+---
+
+## [Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
 
 ---
 
@@ -1150,17 +1137,6 @@ class: bg-dark
 
 Question: who is using Web Components in a production app?
 In a Web Components talk, so probably not.
-
----
-
-> People either used React or Polymer as there is still no way to use Web Components in production otherwise.
-
-[Christian Heilmann - July 1st, 2015](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
-
-???
-
-* React !== Web Components
-* Polymer is built upon Web Components
 
 ---
 
@@ -1360,7 +1336,7 @@ var ReAvatar = React.createClass({
 --
 
 ```js
-React.renderComponent(
+React.render(
 	<ReAvatar service="twitter" username="leggetter" />,
 	document.querySelector('re-avatar')
 );
@@ -1381,7 +1357,7 @@ React.renderComponent(
 
 ---
 
-background-image: url(img/layers-of-polymer.png)
+background-image: url(img/web-components-base.png)
 class: trans-h bg-contain bg-white
 
 ???
@@ -1429,6 +1405,10 @@ class: code-reveal, top, wide
 <po-avatar service="twitter" username="leggetter" />
 ```
 
+???
+
+Inspect element -> show Shadow DOM
+
 --
 
 <div style="text-align: center; margin-top: 30px;">
@@ -1437,7 +1417,7 @@ class: code-reveal, top, wide
 
 ---
 
-class: top
+class: top fixed-width-list
 
 ## Who's using? ...
 
@@ -1465,7 +1445,7 @@ class: top
 * [Famous Components](http://famous.org/learn/components.html)
 --
 
-* Anything.JS Componenets?
+* Anything.JS Components?
 
 ---
 
@@ -1487,6 +1467,10 @@ vs.
 ```xml
 <my-avatar service="twitter" username="leggetter" />
 ```
+
+--
+
+## That's the **HOW**
 
 ---
 
@@ -1517,6 +1501,12 @@ class: bg-dark
 
 ---
 
+> Ember's implementation of components hews as closely to the Web Components specification as possible. Once Custom Elements are widely available in browsers, you should be able to easily migrate your Ember components to the W3C standard and have them be usable by other frameworks.
+
+[http://guides.emberjs.com/v1.13.0/components/](http://guides.emberjs.com/v1.13.0/components/)
+
+---
+
 class: bg-cover
 background-image: url(img/angular-2-component.png)
 
@@ -1540,17 +1530,12 @@ background-image: url(img/angular-2-component.png)
 ---
 
 template: lblue
-class: bg-video, em-text, trans-h
-
-<video id="video" autoplay="false" loop="false" controls="true">
-	<source src="/img/ie-uservoice.mp4" type="video/mp4">
-</video>
+class: bg-video, em-text, trans-h bg-contain bg-white
+background-image: url(./img/demand.png)
 
 ## In Demand
 
 ???
-
-* Positions 2, 3, 5 & 6
 
 ---
 
@@ -1591,7 +1576,7 @@ class: long, wide
 			<gmail-email-list />
 		</main>
 
-		<gmail-talk />
+		<hangouts />
 	</body>
 </html>
 ```
@@ -1740,11 +1725,11 @@ class: middle, center
 ## Problems? Solved in the future?
 
 * HTML Imports
-  * Vulcanize | HTTP2
+  * Vulcanize | HTTP2 | JavaScript modules
 * Shared scripts?
 	* Cache
-* Multiple versions?
-* Better Cross-component communication?
+	* Multiple versions?
+* Better cross-component communication?
 * Allow `<link>` for CSS in Shadow DOM?
 
 ???
