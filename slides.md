@@ -17,29 +17,6 @@ class: title
 
 ---
 
-> Web Components are an endangered species
-
-~
-
-> ...in four years, we haven’t got much to show
-
-[Christian Heilmann - July 1st, 2015](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
-
----
-
-## The rumours about the death of Web Components have been greatly exaggerated
-
----
-
-## As a comparison: WebSocket
-
-* [First suggested in 2008](http://www.mail-archive.com/whatwg@lists.whatwg.org/msg10222.html)
-* [Finalised in December 2011 (RFC6544)](https://tools.ietf.org/html/rfc6455)
-* ~4 Years!
-
-
----
-
 # What we'll cover
 
 * What are Web Components?
@@ -53,7 +30,8 @@ class: title
 
 ---
 
-class: bg-dark
+class: bottom trans-h
+background-image: url(./img/beuller.gif)
 
 # What are Web Components?
 
@@ -76,120 +54,6 @@ class: bg-dark
 class: bg-dark
 
 # Custom Elements
-
----
-
-class: native-components, wide, long
-
-## Right Now - Elements
-
-.left-column[
-```xml
-<button>Click Me</button>
-```
-]
-
-.right-column[
-<button>Click Me</button>
-]
-
-.left-column-2[
-```xml
-<input type="text" />
-<input type="number" />
-<input type="password" />
-```
-]
-
-.right-column-2[
-<input type="text" /><br />
-They all look the same
-]
-
-.left-column-3[
-```xml
-<select>
-	<option>Select Me</option>
-	<option>Dude</option>
-</select>
-```
-]
-
-.right-column-3[
-<select>
-<option>Select Me</option>
-<option>Dude</option>
-</select>
-]
-
-.left-column-4[
-```xml
-<label>Check Me</label>
-<input type="checkbox" />
-```
-]
-
-.right-column-4[
-<label>Check Me</label><input type="checkbox" />
-]
-
-.footer[
-`a`, `b`, `blockquote`, `body`, `br`, `code`, `div`, `em`, `fieldset`, `h1`, `h2`, `hr`, `img`, `li`, `ol`, `p`, `pre`, `span`, `strong`, `style`, `table`, `tr`, `td`, ...
-]
-
-???
-
-* We do have native components
-* Basic
-* Difficult to style
-
----
-
-class: native-components, wide
-
-## HTML5 Elements
-
-.left-column[
-```xml
-<header>I'm a header</header>
-```
-]
-
-.right-column[
-Stuff around sections or grouping content e.g. `main`, `nav`, `footer`, `figure`, `article`, `aside` etc.
-]
-
-.left-column-2[
-```xml
-<progress />
-```
-]
-
-.right-column-2[
-<progress></progress><br />
-Form improvements e.g. `meter`, `datalist`, `keygen`, `output`
-]
-
-.left-column-3[
-```xml
-<video />
-```
-]
-
-.right-column-3[
-<video preload="metadata" autoplay muted loop style="height: 200px;">
-	<source src="assets/dizzy.mp4" type="video/mp4">
-	<source src="assets/dizzy.webm" type="video/webm">
-	<source src="assets/dizzy.ogv" type="video/ogg">
-</video>
-<br />
-Embedded content e.g. `audio`, `canvas`, `svg`, `math`
-]
-
-.footer[
-]
-
-???
 
 ---
 
@@ -257,10 +121,10 @@ class: trans-h
 
 class: top
 
-# The Solution:
 ## &lt;Custom Elements /&gt;
 --
 
+* Bring semantic markup back
 * More than just markup
 * IMHO the most important part of Web Components
 
@@ -321,6 +185,13 @@ class: code-reveal, top, long, wide
 	</body>
 </html>
 ```
+
+---
+
+class: bg-contain top trans-h
+background-image: url(./img/all-components.png)
+
+## [Tools, Tips & Tricks for building Componentised Web Apps](http://leggetter.github.io/componentised-web-apps/#1)
 
 ---
 
@@ -689,48 +560,6 @@ class: bg-dark
 
 ---
 
-## Shadow DOM SubTrees
-
-* Light DOM
-* Shadow DOM
-* Composed (rendered) DOM
-
----
-
-### Light DOM
-
-```xml
-<my-custom-element>
-  <q>Hello World</q> <!-- part of my-custom-element's light DOM -->
-</my-custom-element>
-```
-
----
-
-### Shadow DOM
-
-```xml
-<my-custom-element>
-	#shadow-root
-	  <!-- everything in here is my-custom-element's shadow DOM -->
-	  <span>People say: <content></content></span>
-	  <footer>sometimes</footer>
-</my-custom-element>	
-```
-
----
-
-### Rendered DOM
-
-```xml
-<my-custom-element>
-  <span>People say: <q>Hello World</q></span>
-  <footer>sometimes</footer>
-</my-custom-element>
-```
-
----
-
 class: top
 
 ## Shadow DOM - Problems it solves
@@ -747,7 +576,7 @@ Styles <span class="container">Bleed!</span>
 ```xml
 <template id="my-avatar-tmpl">
 	<style>
-		.container { background-color: gold; }
+		.container { background-color: cyan; }
 		...
 ```
 
@@ -758,7 +587,7 @@ Styles <span class="container">Bleed!</span>
 
 .right-example-col[
 Styles <span class="container">Bleed!</span>
-<my-avatar-tmpl service="twitter" username="leggetter" />
+<button data-action="createBleed">Create</button>
 ]
 
 --
@@ -1011,7 +840,8 @@ class: bg-dark
 
 ## The State of Custom Elements
 
-* `is` - Concerns around Accessibility
+* `is`
+  * Concerns around Accessibility
 
 ???
 * Accessibility
@@ -1024,12 +854,21 @@ class: bg-dark
 
 ---
 
+class: top fixed-width-list
+
 ## The State of Shadow DOM
 
-* "Distribution" - inserting element content into "slots"
-* `createShadowRoot(closed | open)` - protecting the `element.shadowRoot`
-* "Shadow piercing combinators" - `.foo >>> div { color: red }`
-* CSS Custom Properties
+* `<content select="tag" />`
+  * Declarative element content placement
+--
+
+* `element.createShadowRoot({ mode: 'closed' });`
+  * protecting shadowRoot
+--
+
+*  `.foo >>> div { color: red }`
+  * Shadow piercing combinators
+* ...
 
 ---
 
@@ -1045,7 +884,10 @@ class: bg-dark
 
 ---
 
-## [Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
+## Essential "State of" Reading
+
+*  [Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
+*  [Microsoft Edge Team - Bringing componentization to the web: An overview of Web Components](http://blogs.windows.com/msedgedev/2015/07/14/bringing-componentization-to-the-web-an-overview-of-web-components/)
 
 ---
 
@@ -1057,19 +899,6 @@ background-image: url(img/ie-status.png)
 class: trans-h, top
 
 ## Microsoft Edge
-
----
-
-template: lblue
-class: trans-h
-
-<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">MS Edge: Demand</h2>
-
-<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/filters/top"></iframe>
-
-???
-
-* Positions 2, 3, 4 & 5
 
 ---
 
@@ -1087,16 +916,6 @@ class: trans-h, center, middle
 class: trans-h
 
 <h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">State of Browser Support</h2>
-
-<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="http://jonrimmer.github.io/are-we-componentized-yet/"></iframe>
-
-???
-
----
-
-class: trans-h
-
-<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">State of Browser Support (cont.)</h2>
 
 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="http://caniuse.com/#search=web%20components"></iframe>
 
@@ -1123,7 +942,8 @@ Shadow DOM: CSS encapsulation limited etc.
 
 ---
 
-class: bg-dark
+class: bg-dark bg-contain bottom trans-h
+background-image: url(./img/beuller-happy.jpg)
 
 # Componentised Web Apps Now
 
@@ -1507,6 +1327,18 @@ class: bg-dark
 
 ---
 
+## Note: Have a Strategy
+
+* Will libraries update to use Web Components?
+* Align with Web Components to make migrating easier
+	* Split UI rendering and business logic
+
+???
+
+
+
+---
+
 class: bg-cover
 background-image: url(img/angular-2-component.png)
 
@@ -1531,9 +1363,10 @@ background-image: url(img/angular-2-component.png)
 
 template: lblue
 class: bg-video, em-text, trans-h bg-contain bg-white
-background-image: url(./img/demand.png)
 
 ## In Demand
+
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/filters/top"></iframe>
 
 ???
 
@@ -1610,7 +1443,7 @@ class: long, wide
 
 * Custom Events
 * Element API (interface)
-* Existing messaging frameworks
+* *Or use existing messaging frameworks*
 
 ???
 
@@ -1686,6 +1519,9 @@ class: wide, long, top, code-reveal
 
 ## Supports Change
 
+* Encapsulation
+* Loose Coupling
+
 ???
 
 * loose coupling E.G. interaction through APIs
@@ -1695,7 +1531,10 @@ class: wide, long, top, code-reveal
 
 class: wide
 
-## Reusability
+## Encourage Reuse
+
+* Ease of Sharing
+* Composition
 
 ```xml
 <link rel="import" href="https://some-cdn.com/my-avatar.html" />
@@ -1738,7 +1577,7 @@ class: middle, center
 
 ---
 
-class: top, fixed-ul, wide, long, bg-dark
+class: top wide long bg-dark fixed-width-list
 
 ## Summary
 
@@ -1770,15 +1609,18 @@ class: top, fixed-ul, wide, long, bg-dark
 
 ## Resources
 
-* http://pusher.com - easily add realtime messaging to your apps
 * http://webcomponents.org/
 * https://www.polymer-project.org
+* [Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
+* [Christian Heilmann - Web Components are an Endangered Species](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
+* [Are we compontentized yet (podcast)](http://thewebplatform.libsyn.com/54-are-web-components-ready-yet)
 * [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/)
 * [Angular Material](https://material.angularjs.org/)
 * [Google Material Design](http://www.google.com/design/spec/material-design/introduction.html)
 * [HTML Template Chooser](http://garann.github.io/template-chooser/)
 * [IE UserVoice forum](https://wpdev.uservoice.com/forums/257854-internet-explorer-platform/filters/top)
 * [Source for these slides](https://github.com/leggetter/web-components-now/tree/devweek-2015)
+* http://pusher.com - easily add realtime messaging to your apps
 
 ---
 
