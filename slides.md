@@ -17,6 +17,16 @@ class: title
 
 ---
 
+class: bg-dark bg-contain
+background-image: url(./img/pusher-circles.png)
+
+---
+
+class: bg-cover
+background-image: url(./img/brjs-video-compilation.png)
+
+---
+
 # What we'll cover
 
 * What are Web Components?
@@ -781,8 +791,7 @@ class: center, middle
 
 * Bundle JS/HTML/CSS → single URL
 * Basic dependency management
-	* Sharing & reuse
-* Supports composition
+* Sharing, Reuse, Composition
 
 ---
 
@@ -795,7 +804,12 @@ class: center, middle
 ```
 ( function( currentScript ) {
 
-	var ownerDoc = currentScript.ownerDocument;
+	var importDoc = currentScript.ownerDocument;
+	
+	TeamPusherPrototype.createdCallback = function() {
+    var content = importDoc.querySelector( '#team-pusher-tmpl' ).content;
+	  // ...
+	};
 
 } )( document._currentScript || document.currentScript );
 ```
@@ -842,6 +856,8 @@ class: bg-dark
 
 * `is`
   * Concerns around Accessibility
+* Point of Upgrade
+  * When HTMLElement is transformed into Custom Element
 
 ???
 * Accessibility
@@ -1298,6 +1314,8 @@ class: bg-dark
 
 # Why Web Components are the future!
 
+![](./img/forward3-logo.png)
+
 ---
 
 # 1. You're already building componentised web apps
@@ -1306,7 +1324,7 @@ class: bg-dark
 
 ---
 
-# 2. Trends & Demand
+# 2. Trends/Alignment
 
 ---
 
@@ -1327,20 +1345,18 @@ class: bg-dark
 
 ---
 
-## Note: Have a Strategy
+class: bg-cover
+background-image: url(img/angular-2-component.png)
+
+---
+
+## Have a Strategy
 
 * Will libraries update to use Web Components?
 * Align with Web Components to make migrating easier
 	* Split UI rendering and business logic
 
 ???
-
-
-
----
-
-class: bg-cover
-background-image: url(img/angular-2-component.png)
 
 ---
 
@@ -1364,7 +1380,7 @@ background-image: url(img/angular-2-component.png)
 template: lblue
 class: bg-video, em-text, trans-h bg-contain bg-white
 
-## In Demand
+## 3. Demand
 
 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/filters/top"></iframe>
 
@@ -1374,7 +1390,7 @@ class: bg-video, em-text, trans-h bg-contain bg-white
 
 class: middle, center
 
-# 3. Encourages good software development
+# 4. Encourages good software development
 
 ## [Component-based Development](http://en.wikipedia.org/wiki/Component-based_software_engineering)
 
@@ -1568,6 +1584,7 @@ class: middle, center
 * Shared scripts?
 	* Cache
 	* Multiple versions?
+* JavaScript scoping in v2
 * Better cross-component communication?
 * Allow `<link>` for CSS in Shadow DOM?
 
@@ -1590,7 +1607,7 @@ class: top wide long bg-dark fixed-width-list
 
 --
 
-* You *can* & *are* building componentised web apps now
+* You *can* & *are* building componentised web apps now - Align
 
 --
 
@@ -1606,6 +1623,8 @@ class: top wide long bg-dark fixed-width-list
 * Custom Elements - declarative, readable, support extension, native benefits
 
 ---
+
+class: long
 
 ## Resources
 
@@ -1633,5 +1652,5 @@ class: title
 [leggetter.github.io/web-components-now](leggetter.github.io/web-components-now)
 
 * <span class="speaker">Phil @leggetter</span>
-* <span class="speaker-job-title">Head of Evangelism</span>
+* <span class="speaker-job-title">Head of Developer Relations</span>
 * <span class="speaker-pusher-logo"></span>
