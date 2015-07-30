@@ -233,9 +233,25 @@
       .fixed-ul ul {
         width: 100%;
       }
+      
+      .fixed-width-list ul,
+      .fixed-width-list ol {
+        width: 650px;
+      }
+      
+      #twitter_id {
+        position: fixed;
+        bottom: 6%;
+        left: 2%;
+        font-size: 1.2em;
+        color: white;
+        z-index: 100000;
+      }
     </style>
   </head>
   <body>
+    
+    <span id="twitter_id">@leggetter</span>
 
     <script src="js/remark.js" type="text/javascript">
     </script>
@@ -244,18 +260,33 @@
         sourceUrl: 'slides.md',
         highlightLanguage: 'remark',
         navigation: {
-          scroll: false,
-
+          scroll: false
         },
-        ratio: "4:3"
+        ratio: "16:9"
       });
     </script>
 
     <template id="my-avatar-template">
       <style>
+        .container { background-color: gold; }
+        .float-right { width: 130px; float: right; }
+        .container img { float: left; }
+        .username { font-size: 18px; float: right; clear: right; }
+        .service { font-size: 14px; float: right; clear: right; }
+      </style>
+      <div class="container float-right">
+        <img class="avatar" />
+        <span class="username"></span>
+        <span class="service"></span>
+        
+      </div>
+    </template>
+    
+    <template id="my-avatar-bleed-template">
+      <style>
         .container { background-color: cyan; }
         .float-right { width: 130px; float: right; }
-        img { float: left; }
+        .container img { float: left; }
         .username { font-size: 18px; float: right; clear: right; }
         .service { font-size: 14px; float: right; clear: right; }
       </style>

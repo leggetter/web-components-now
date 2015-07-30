@@ -93,6 +93,8 @@ function createPhils() {
 
 var MyAvatarTmplPrototype = Object.create(HTMLElement.prototype);
 
+MyAvatarTmplPrototype.templateId = 'my-avatar-template';
+
 MyAvatarTmplPrototype.updateEl = function() {
   var username = this.getAttribute('username'),
   service = this.getAttribute('service'),
@@ -104,7 +106,7 @@ MyAvatarTmplPrototype.updateEl = function() {
 };
 
 MyAvatarTmplPrototype.createdCallback = function() {
-  var content = document.querySelector( '#my-avatar-template' ).content;
+  var content = document.querySelector( '#' + this.templateId ).content;
   this.el = document.importNode( content, true );
   this.appendChild( this.el );
   this.updateEl();
@@ -120,10 +122,28 @@ document.registerElement('my-avatar-tmpl', {
 
 /*****************************/
 
+var MyAvatarBleedTmplPrototype = Object.create(MyAvatarTmplPrototype);
+
+MyAvatarBleedTmplPrototype.templateId = 'my-avatar-bleed-template';
+
+document.registerElement('my-avatar-bleed-tmpl', {
+  prototype: MyAvatarBleedTmplPrototype
+});
+
+/*****************************/
+
 function createAvatar( e ) {
   var el = e.srcElement || e.target;
   var avatar = document.createElement( 'my-avatar-tmpl' );
-  avatar.setAttribute( 'service', 'facebook' );
+  avatar.setAttribute( 'service', 'twitter' );
+  avatar.setAttribute( 'username', 'leggetter' );
+  el.parentNode.replaceChild(avatar, el);
+}
+
+function createBleed( e ) {
+  var el = e.srcElement || e.target;
+  var avatar = document.createElement( 'my-avatar-bleed-tmpl' );
+  avatar.setAttribute( 'service', 'twitter' );
   avatar.setAttribute( 'username', 'leggetter' );
   el.parentNode.replaceChild(avatar, el);
 }
@@ -161,11 +181,11 @@ document.registerElement('my-avatar-shadow', {
 
 /*****************************/
 
-function createDevWeek( e ) {
+function createForwardJS( e ) {
   var el = e.srcElement || e.target;
   var avatar = document.createElement( 'my-avatar-shadow' );
   avatar.setAttribute( 'service', 'twitter' );
-  avatar.setAttribute( 'username', 'DevWeek' );
+  avatar.setAttribute( 'username', 'ForwardJS' );
   el.parentNode.replaceChild(avatar, el);
 }
 

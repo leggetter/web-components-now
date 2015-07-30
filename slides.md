@@ -5,33 +5,34 @@ class: bg-light, center, middle
 
 ---
 
-class: bg-contain
-background-image: url(./img/devweek-web-components.png)
-
----
-
 class: title
 
 # Why you should be using Web Components Now. And How.
 
 * <span class="speaker">Phil @leggetter</span>
-* <span class="speaker-job-title">Head of Evangelism</span>
+* <span class="speaker-job-title">Head of Developer Relations</span>
 * <span class="speaker-pusher-logo"></span>
 
 ???
 
+---
+
+class: bg-dark bg-contain
+background-image: url(./img/pusher-circles.png)
+
+---
+
+class: bg-cover
+background-image: url(./img/brjs-video-compilation.png)
 
 ---
 
 # What we'll cover
 
 * What are Web Components?
-* State of native support
-* Componentised Web Apps now
-* Why Web Components are the future!
---
-
-* &hearts; [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/) &hearts;
+* The State of Web Components
+* Componentised Web Apps Now
+* Why Web Components are the Future!
 
 ???
 
@@ -39,7 +40,8 @@ class: title
 
 ---
 
-class: bg-dark
+class: bottom trans-h
+background-image: url(./img/beuller.gif)
 
 # What are Web Components?
 
@@ -62,120 +64,6 @@ class: bg-dark
 class: bg-dark
 
 # Custom Elements
-
----
-
-class: native-components, wide, long
-
-## Right Now - Elements
-
-.left-column[
-```xml
-<button>Click Me</button>
-```
-]
-
-.right-column[
-<button>Click Me</button>
-]
-
-.left-column-2[
-```xml
-<input type="text" />
-<input type="number" />
-<input type="password" />
-```
-]
-
-.right-column-2[
-<input type="text" /><br />
-They all look the same
-]
-
-.left-column-3[
-```xml
-<select>
-	<option>Select Me</option>
-	<option>Dude</option>
-</select>
-```
-]
-
-.right-column-3[
-<select>
-<option>Select Me</option>
-<option>Dude</option>
-</select>
-]
-
-.left-column-4[
-```xml
-<label>Check Me</label>
-<input type="checkbox" />
-```
-]
-
-.right-column-4[
-<label>Check Me</label><input type="checkbox" />
-]
-
-.footer[
-`a`, `b`, `blockquote`, `body`, `br`, `code`, `div`, `em`, `fieldset`, `h1`, `h2`, `hr`, `img`, `li`, `ol`, `p`, `pre`, `span`, `strong`, `style`, `table`, `tr`, `td`, ...
-]
-
-???
-
-* We do have native components
-* Basic
-* Difficult to style
-
----
-
-class: native-components, wide
-
-## HTML5 Elements
-
-.left-column[
-```xml
-<header>I'm a header</header>
-```
-]
-
-.right-column[
-Stuff around sections or grouping content e.g. `main`, `nav`, `footer`, `figure`, `article`, `aside` etc.
-]
-
-.left-column-2[
-```xml
-<progress />
-```
-]
-
-.right-column-2[
-<progress></progress><br />
-Form improvements e.g. `meter`, `datalist`, `keygen`, `output`
-]
-
-.left-column-3[
-```xml
-<video />
-```
-]
-
-.right-column-3[
-<video preload="metadata" autoplay muted loop style="height: 200px;">
-	<source src="assets/dizzy.mp4" type="video/mp4">
-	<source src="assets/dizzy.webm" type="video/webm">
-	<source src="assets/dizzy.ogv" type="video/ogg">
-</video>
-<br />
-Embedded content e.g. `audio`, `canvas`, `svg`, `math`
-]
-
-.footer[
-]
-
-???
 
 ---
 
@@ -243,10 +131,10 @@ class: trans-h
 
 class: top
 
-# The Solution:
 ## &lt;Custom Elements /&gt;
 --
 
+* Bring semantic markup back
 * More than just markup
 * IMHO the most important part of Web Components
 
@@ -303,10 +191,17 @@ class: code-reveal, top, long, wide
 --
 
 ```xml
-		<gmail-talk />
+		<hangouts />
 	</body>
 </html>
 ```
+
+---
+
+class: bg-contain top trans-h
+background-image: url(./img/all-components.png)
+
+## [Tools, Tips & Tricks for building Componentised Web Apps](http://leggetter.github.io/componentised-web-apps/#1)
 
 ---
 
@@ -326,16 +221,6 @@ class: wide
 
 .left-code-col[
 ```xml
-<img src="http://avatars.io/facebook/leggetter" />
-```
-]
-
-.right-example-col[
-<img src="http://avatars.io/facebook/leggetter" />
-]
-
-.left-code-col[
-```xml
 <img src="http://avatars.io/instagram/leggetter" />
 ```
 ]
@@ -351,7 +236,17 @@ class: wide
 ]
 
 .right-example-col[
-<img src="http://avatars.io/gravatar/phil@leggetter.co.uk" />
+<img src="http://avatars.io/gravatar/phil@pusher.com" />
+]
+
+.left-code-col[
+```xml
+<img src="http://api.skype.com/users/pleggetter/profile/avatar" />
+```
+]
+
+.right-example-col[
+<img src="http://api.skype.com/users/pleggetter/profile/avatar" />
 ]
 
 ---
@@ -430,16 +325,6 @@ class: wide
 
 .left-code-col[
 ```xml
-<my-avatar service="facebook" username="leggetter" />
-```
-]
-
-.right-example-col[
-<my-avatar service="facebook" username="leggetter" />
-]
-
-.left-code-col[
-```xml
 <my-avatar service="instagram" username="leggetter" />
 ```
 ]
@@ -450,12 +335,12 @@ class: wide
 
 .left-code-col[
 ```xml
-<my-avatar service="twitter" username="garyshort" />
+<my-avatar service="twitter" username="forwardjs" />
 ```
 ]
 
 .right-example-col[
-<my-avatar service="twitter" username="garyshort" />
+<my-avatar service="twitter" username="forwardjs" />
 ]
 
 ---
@@ -598,7 +483,7 @@ class: code-reveal, container, wide, top, long
 ```xml
 <template id="my-avatar-template">
 	<style>
-		.container { background-color: cyan; }
+		.container { background-color: gold; }
 		<!-- omitted for brevity -->
 	</style>
 	<div class="container">
@@ -685,46 +570,6 @@ class: bg-dark
 
 ---
 
-## Shadow DOM SubTrees
-
-* Light DOM
-* Shadow DOM
-* Composed (rendered) DOM
-
----
-
-### Light DOM
-
-```xml
-<my-custom-element>
-  <q>Hello World</q> <!-- part of my-custom-element's light DOM -->
-</my-custom-element>
-```
-
----
-
-### Shadow DOM
-
-```xml
-#document-fragment
-  <!-- everything in here is my-custom-element's shadow DOM -->
-  <span>People say: <content></content></span>
-  <footer>sometimes</footer>
-```
-
----
-
-### Rendered DOM
-
-```xml
-<my-custom-element>
-  <span>People say: <q>Hello World</q></span>
-  <footer>sometimes</footer>
-</my-custom-element>
-```
-
----
-
 class: top
 
 ## Shadow DOM - Problems it solves
@@ -752,7 +597,7 @@ Styles <span class="container">Bleed!</span>
 
 .right-example-col[
 Styles <span class="container">Bleed!</span>
-<button data-action="createAvatar">Me</button>
+<button data-action="createBleed">Create</button>
 ]
 
 --
@@ -779,7 +624,7 @@ Global DOM <br /> e.g. `id` attributes
 
 class: code-reveal, container, wide, top, long
 
-## Shadow DOM - In Action <button data-action="createDevWeek">Create DevWeek</button>
+## Shadow DOM - In Action <button data-action="createForwardJS">Create ForwardJS</button>
 
 --
 
@@ -946,12 +791,11 @@ class: center, middle
 
 * Bundle JS/HTML/CSS → single URL
 * Basic dependency management
-	* Sharing & reuse
-* Supports composition
+* Sharing, Reuse, Composition
 
 ---
 
-# HTML Imports - Gotchas / Patterns!
+# Gotchas / Patterns!
 
 ---
 
@@ -960,7 +804,12 @@ class: center, middle
 ```
 ( function( currentScript ) {
 
-	var ownerDoc = currentScript.ownerDocument;
+	var importDoc = currentScript.ownerDocument;
+	
+	TeamPusherPrototype.createdCallback = function() {
+    var content = importDoc.querySelector( '#team-pusher-tmpl' ).content;
+	  // ...
+	};
 
 } )( document._currentScript || document.currentScript );
 ```
@@ -991,67 +840,55 @@ Returns the &lt;script&gt; element whose script is currently being processed
 </template>
 ```
 
+![](./img/link-element-ignored-in-shadow-tree.png)
+
 ???
 
 ---
 
 class: bg-dark
 
-# State of Native Support
+# The State of...
 
 ---
 
-class: stats
+## The State of Custom Elements
 
-## Browsers
-
-<table>
-	<thead>
-		<tr>
-			<td></td>
-			<td>Chrome 41</td>
-			<td>Firefox 36</td>
-			<td>Safari 8</td>
-			<td>IE 10</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Custom Elements</td>
-			<td class="yes">Y</td>
-			<td class="maybe">N*</td>
-			<td class="no">N</td>
-			<td class="no">N</td>
-		</tr>
-		<tr>
-			<td>Templates</td>
-			<td class="yes">Y</td>
-			<td class="yes">Y</td>
-			<td class="yes">Y</td>
-			<td class="no">N</td>
-		</tr>
-		<tr>
-			<td>Shadow DOM</td>
-			<td class="yes">Y</td>
-			<td class="maybe">N*</td>
-			<td class="no">N</td>
-			<td class="no">N</td>
-		</tr>
-		<tr>
-			<td>HTML Imports</td>
-			<td class="yes">Y</td>
-			<td class="maybe">N*</td>
-			<td class="no">N</td>
-			<td class="no">N</td>
-		</tr>
-	</tbody>
-</table>
-
-<small>* Can be enabled in config</small>
+* `is`
+  * Concerns around Accessibility
+* Point of Upgrade
+  * When HTMLElement is transformed into Custom Element
 
 ???
+* Accessibility
+	* missing key accessibility primitives
+	* no way to properly extend built-in elements
 
-* Opera uses same rendering engine as Chrome so has similar support
+---
+
+## The State of Templates &#10004;
+
+---
+
+class: top fixed-width-list
+
+## The State of Shadow DOM
+
+* `<content select="tag" />`
+  * Declarative element content placement
+--
+
+* `element.createShadowRoot({ mode: 'closed' });`
+  * protecting shadowRoot
+--
+
+*  `.foo >>> div { color: red }`
+  * Shadow piercing combinators
+* ...
+
+---
+
+## The State of HTML Imports
 
 ---
 
@@ -1063,37 +900,40 @@ class: stats
 
 ---
 
-background-image: url(img/ie-status.png)
-class: trans-h, center
+## Essential "State of" Reading
 
-## Internet Explorer
+*  [Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
+*  [Microsoft Edge Team - Bringing componentization to the web: An overview of Web Components](http://blogs.windows.com/msedgedev/2015/07/14/bringing-componentization-to-the-web-an-overview-of-web-components/)
 
 ---
 
-template: lblue
-class: bg-video
+## The State of Browsers
 
-<video id="video" autoplay="false" loop="false" controls="true">
-	<source src="/img/ie-uservoice.mp4" type="video/mp4">
-</video>
+---
 
-<a style="position: absolute; left: 5%; top: 5%; color: blue; z-index: 200;" href="https://wpdev.uservoice.com/forums/257854-internet-explorer-platform/filters/top">IE UserVoice</a>
+background-image: url(img/ie-status.png)
+class: trans-h, top
 
-???
-
-* Positions 2, 3, 5 & 6
+## Microsoft Edge
 
 ---
 
 background-image: url(img/safari-logo.png)
 class: trans-h, center, middle
 
-# Safari?
+<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">Safari</h2>
+
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://lists.w3.org/Archives/Public/public-webapps/2015JulSep/0204.html"></iframe>
 
 ???
 
-* Did have Shadow DOM support
-* Removed, but Eric Bidleman says it may be coming back
+---
+
+class: trans-h
+
+<h2 style="position: absolute; z-index: 1000; bottom: 5%; left: 5%;">State of Browser Support</h2>
+
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="http://caniuse.com/#search=web%20components"></iframe>
 
 ---
 
@@ -1108,51 +948,9 @@ class: stats, long
 
 ## Browsers - with Polyfills
 
-<table>
-<thead>
-<tr>
-<td></td>
-<td>Chrome 42</td>
-<td>Firefox 36</td>
-<td>Safari 8</td>
-<td>IE 10</td>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Custom Elements</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-</tr>
-<tr>
-<td>Templates</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-</tr>
-<tr>
-<td>Shadow DOM</td>
-<td class="yes">Y</td>
-<td class="maybe">Y*</td>
-<td class="maybe">Y*</td>
-<td class="maybe">Y*</td>
-</tr>
-<tr>
-<td>HTML Imports</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-<td class="yes">Y</td>
-</tr>
-</tbody>
-</table>
+![](./img/webcomponents-polyfill-browser-support.png)
 
-http://webcomponents.org/polyfills
-
-<small>* <a href="http://webcomponents.org/polyfills/shadow-dom/#known-limitations">Shadow DOM Polyfill limitations</a></small>
+https://github.com/webcomponents/webcomponentsjs#browser-support
 
 ???
 
@@ -1160,16 +958,27 @@ Shadow DOM: CSS encapsulation limited etc.
 
 ---
 
-class: bg-dark
+class: bg-dark bg-contain bottom trans-h
+background-image: url(./img/beuller-happy.jpg)
 
-# Componentised Web Apps now
+# Componentised Web Apps Now
 
+---
+
+> When we asked the very captive and elite audience of EdgeConf about Web Components, nobody raised their hand that they are using them in real products.
+
+[Christian Heilmann - July 1st, 2015](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
+
+???
+
+Question: who is using Web Components in a production app?
+In a Web Components talk, so probably not.
 
 ---
 
 class: top
 
-## Componentised Web Apps now - questions?
+## Componentised Web Apps Now - questions?
 
 *Should native browser support stop us thinking about building
 componentised web apps?*
@@ -1363,7 +1172,7 @@ var ReAvatar = React.createClass({
 --
 
 ```js
-React.renderComponent(
+React.render(
 	<ReAvatar service="twitter" username="leggetter" />,
 	document.querySelector('re-avatar')
 );
@@ -1384,24 +1193,8 @@ React.renderComponent(
 
 ---
 
-### Many More...
-
-* [KnockoutJS Components](http://knockoutjs.com/documentation/component-overview.html)
-* [Backbone components](https://github.com/malroc/backbone-component)
-* [Backbone with React components](https://github.com/magalhas/backbone-react-component)
-* [CanJS components](http://canjs.com/guides/Components.html)
-
-And...
-
-???
-
-* KO introduced components in 3.2
-
-
----
-
-background-image: url(img/layers-of-polymer.png)
-class: trans-h, center
+background-image: url(img/web-components-base.png)
+class: trans-h bg-contain bg-white
 
 ???
 
@@ -1445,24 +1238,50 @@ class: code-reveal, top, wide
 --
 
 ```xml
-<po-avatar service="facebook" username="leggetter" />
+<po-avatar service="twitter" username="leggetter" />
 ```
+
+???
+
+Inspect element -> show Shadow DOM
 
 --
 
 <div style="text-align: center; margin-top: 30px;">
-	<po-avatar service="facebook" username="leggetter" />
+	<po-avatar service="twitter" username="leggetter" />
 </div>
 
 ---
 
-background-image: url(img/polymer-paper-elements.png)
-class: bg-cover
+class: top fixed-width-list
 
----
+## Who's using? ...
 
-background-image: url(img/md-angularjs.png)
-class: bg-cover
+* [Angular Directives](https://docs.angularjs.org/guide/directive)
+--
+
+* [Ember Components](http://guides.emberjs.com/v1.13.0/components/)
+--
+
+* [React Components](http://facebook.github.io/react/index.html)
+--
+
+* [KnockoutJS Components](http://knockoutjs.com/documentation/component-overview.html)
+--
+
+* [Vue.js Components](http://vuejs.org/guide/index.html#Components)
+--
+
+* [Backbone Components](https://github.com/malroc/backbone-component)
+--
+
+* [CanJS Components](http://canjs.com/guides/Components.html)
+--
+
+* [Famous Components](http://famous.org/learn/components.html)
+--
+
+* Anything.JS Components?
 
 ---
 
@@ -1470,11 +1289,10 @@ class: top, long, wide
 
 ## Who's Building Componentised Web Apps now?
 
+Angular, Ember, Backbone, Knockout, React, Vue.js, Web Components with Polyfills, Polymer ...
 --
 
-Angular, Ember, Backbone, Knockout, React, Web Components with Polyfills, Polymer
-
-## **You** probably are already
+## **You** are!
 
 ```xml
 <ng-avatar service="twitter" username="leggetter" />
@@ -1486,28 +1304,17 @@ vs.
 <my-avatar service="twitter" username="leggetter" />
 ```
 
----
+--
 
-class: trans-all
-background-image: url(img/poly-mail.png)
-
-## Examples
-
-* [From Eric's Slides](http://polymer-change.appspot.com/#19)
-	* [GitHub](https://github.com/)
-	* Chrome OS
-* [GMail built in Polymer](https://poly-mail.appspot.com/)
-* [Topeka game built in Polymer](https://www.polymer-project.org/apps/topeka/)
-
-???
-
-* GitHub time inspect element
+## That's the **HOW**
 
 ---
 
 class: bg-dark
 
 # Why Web Components are the future!
+
+![](./img/forward3-logo.png)
 
 ---
 
@@ -1517,7 +1324,7 @@ class: bg-dark
 
 ---
 
-# 2. Trends & Demand
+# 2. Trends/Alignment
 
 ---
 
@@ -1532,20 +1339,34 @@ class: bg-dark
 
 ---
 
+> Ember's implementation of components hews as closely to the Web Components specification as possible. Once Custom Elements are widely available in browsers, you should be able to easily migrate your Ember components to the W3C standard and have them be usable by other frameworks.
+
+[http://guides.emberjs.com/v1.13.0/components/](http://guides.emberjs.com/v1.13.0/components/)
+
+---
+
 class: bg-cover
 background-image: url(img/angular-2-component.png)
 
 ---
 
+## Have a Strategy
+
+* Will libraries update to use Web Components?
+* Align with Web Components to make migrating easier
+	* Split UI rendering and business logic
+
+???
+
+---
+
 ## Browser Vendor Support
 
-* Google
-* Opera - uses Blink
-* Mozilla
-* Microsoft - ?
-  * previously: HTA & ASP.NET Controls
-	* In high demand on IE UserVoice
-* Apple - ?
+* Google &#10004;
+* Opera &#10004;
+* Mozilla &#10004;
+* Microsoft &#10004;
+* Apple &#10004;
 
 ???
 
@@ -1557,23 +1378,19 @@ background-image: url(img/angular-2-component.png)
 ---
 
 template: lblue
-class: bg-video, em-text, trans-h
+class: bg-video, em-text, trans-h bg-contain bg-white
 
-<video id="video" autoplay="false" loop="false" controls="true">
-	<source src="/img/ie-uservoice.mp4" type="video/mp4">
-</video>
+## 3. Demand
 
-## In Demand
+<iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/filters/top"></iframe>
 
 ???
-
-* Positions 2, 3, 5 & 6
 
 ---
 
 class: middle, center
 
-# 3. Encourages good software development
+# 4. Encourages good software development
 
 ## [Component-based Development](http://en.wikipedia.org/wiki/Component-based_software_engineering)
 
@@ -1608,17 +1425,18 @@ class: long, wide
 			<gmail-email-list />
 		</main>
 
-		<gmail-talk />
+		<hangouts />
 	</body>
 </html>
 ```
 
 ???
 
+* Each component addresses a separate concern
+	* a functional concern
 * HTML / Content, CSS / Presentation / JS Behaviour
 * We start to build our apps out of components
 * Each component does a specific thing
-* Each has its own functional concern
 
 ---
 
@@ -1641,7 +1459,7 @@ class: long, wide
 
 * Custom Events
 * Element API (interface)
-* Existing messaging frameworks
+* *Or use existing messaging frameworks*
 
 ???
 
@@ -1717,6 +1535,9 @@ class: wide, long, top, code-reveal
 
 ## Supports Change
 
+* Encapsulation
+* Loose Coupling
+
 ???
 
 * loose coupling E.G. interaction through APIs
@@ -1726,7 +1547,10 @@ class: wide, long, top, code-reveal
 
 class: wide
 
-## Reusability
+## Encourage Reuse
+
+* Ease of Sharing
+* Composition
 
 ```xml
 <link rel="import" href="https://some-cdn.com/my-avatar.html" />
@@ -1756,11 +1580,12 @@ class: middle, center
 ## Problems? Solved in the future?
 
 * HTML Imports
-  * Vulcanize | HTTP2
+  * Vulcanize | HTTP2 | JavaScript modules
 * Shared scripts?
 	* Cache
-* Multiple versions?
-* Better Cross-component communication?
+	* Multiple versions?
+* JavaScript scoping in v2
+* Better cross-component communication?
 * Allow `<link>` for CSS in Shadow DOM?
 
 ???
@@ -1769,7 +1594,7 @@ class: middle, center
 
 ---
 
-class: top, fixed-ul, wide, long, bg-dark
+class: top wide long bg-dark fixed-width-list
 
 ## Summary
 
@@ -1782,7 +1607,7 @@ class: top, fixed-ul, wide, long, bg-dark
 
 --
 
-* You *can* & *are* building componentised web apps now
+* You *can* & *are* building componentised web apps now - Align
 
 --
 
@@ -1799,17 +1624,22 @@ class: top, fixed-ul, wide, long, bg-dark
 
 ---
 
+class: long
+
 ## Resources
 
-* http://pusher.com - easily add realtime messaging to your apps
 * http://webcomponents.org/
 * https://www.polymer-project.org
+* [Wilson Page - The State of Web Components](https://hacks.mozilla.org/2015/06/the-state-of-web-components/)
+* [Christian Heilmann - Web Components are an Endangered Species](http://christianheilmann.com/2015/07/01/over-the-edge-web-components-are-an-endangered-species/)
+* [Are we compontentized yet (podcast)](http://thewebplatform.libsyn.com/54-are-web-components-ready-yet)
 * [Eric Bidelman's Google IO 2014 talk](http://polymer-change.appspot.com/)
 * [Angular Material](https://material.angularjs.org/)
 * [Google Material Design](http://www.google.com/design/spec/material-design/introduction.html)
 * [HTML Template Chooser](http://garann.github.io/template-chooser/)
 * [IE UserVoice forum](https://wpdev.uservoice.com/forums/257854-internet-explorer-platform/filters/top)
 * [Source for these slides](https://github.com/leggetter/web-components-now/tree/devweek-2015)
+* http://pusher.com - easily add realtime messaging to your apps
 
 ---
 
@@ -1822,5 +1652,5 @@ class: title
 [leggetter.github.io/web-components-now](leggetter.github.io/web-components-now)
 
 * <span class="speaker">Phil @leggetter</span>
-* <span class="speaker-job-title">Head of Evangelism</span>
+* <span class="speaker-job-title">Head of Developer Relations</span>
 * <span class="speaker-pusher-logo"></span>
