@@ -1,0 +1,31 @@
+{
+  "name": "web-components-now",
+  "version": "0.3.0",
+  "description": "Why you should be using Web Components now. And how.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leggetter/web-components-now.git"
+  },
+  "keywords": [
+    "web",
+    "components",
+    "presentation",
+    "slides"
+  ],
+  "author": "Pusher <support@pusher.com> (https://pusher.com)",
+  "license": "Creative Commons attribution and share-alike license",
+  "bugs": {
+    "url": "https://github.com/leggetter/web-components-now/issues"
+  },
+  "homepage": "https://github.com/leggetter/web-components-now",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-image-resize": "^0.6.0",
+    "gulp-imagemin": "^2.3.0",
+    "imagemin-pngquant": "^4.2.0"
+  }
+}
