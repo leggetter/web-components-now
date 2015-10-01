@@ -17,7 +17,7 @@ class: title
 
 ---
 
-class: bg-dark bg-contain
+class: bg-dark bg-contain circles
 background-image: url(./img/pusher-circles.png)
 
 ---
@@ -40,7 +40,7 @@ background-image: url(./img/brjs-video-compilation.png)
 
 ---
 
-class: bottom trans-h
+class: trans-h top
 background-image: url(./img/beuller.gif)
 
 # What are Web Components?
@@ -335,12 +335,12 @@ class: wide
 
 .left-code-col[
 ```xml
-<my-avatar service="twitter" username="forwardjs" />
+<my-avatar service="twitter" username="hackferencebrum" />
 ```
 ]
 
 .right-example-col[
-<my-avatar service="twitter" username="forwardjs" />
+<my-avatar service="twitter" username="hackferencebrum" />
 ]
 
 ---
@@ -624,7 +624,7 @@ Global DOM <br /> e.g. `id` attributes
 
 class: code-reveal, container, wide, top, long
 
-## Shadow DOM - In Action <button data-action="createForwardJS">Create ForwardJS</button>
+## Shadow DOM - In Action <button data-action="createhackferencebrum">Create hackferencebrum</button>
 
 --
 
@@ -742,8 +742,8 @@ class: code-reveal, top, wide, long
 <template id="team-pusher-tmpl">
 	<style>...</style>
 
-	<my-avatar-import service="twitter" username="maxthelion" />
-	<my-avatar-import service="twitter" username="copypastaa" />
+	<my-avatar-import service="twitter" username="jamiepatel" />
+	<my-avatar-import service="twitter" username="oliadukova" />
 	...
 	<my-avatar-import service="twitter" username="leggetter" />
 </template>
@@ -1313,8 +1313,6 @@ vs.
 class: bg-dark
 
 # Why Web Components are the future!
-
-![](./img/forward3-logo.png)
 
 ---
 
