@@ -181,11 +181,11 @@ document.registerElement('my-avatar-shadow', {
 
 /*****************************/
 
-function createForwardJS( e ) {
+function createHackferenceBrum( e ) {
   var el = e.srcElement || e.target;
   var avatar = document.createElement( 'my-avatar-shadow' );
   avatar.setAttribute( 'service', 'twitter' );
-  avatar.setAttribute( 'username', 'ForwardJS' );
+  avatar.setAttribute( 'username', 'hackferencebrum' );
   el.parentNode.replaceChild(avatar, el);
 }
 

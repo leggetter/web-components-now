@@ -17,6 +17,11 @@ class: title
 
 ---
 
+class: bg-cover bg-white
+background-image: url(./img/food/pizza.jpg)
+
+---
+
 class: bg-dark bg-contain circles
 background-image: url(./img/pusher-circles.png)
 
@@ -40,8 +45,8 @@ background-image: url(./img/brjs-video-compilation.png)
 
 ---
 
-class: trans-h top
-background-image: url(./img/beuller.gif)
+class: trans-h bottom
+background-image: url(./img/yawn.gif)
 
 # What are Web Components?
 
@@ -624,7 +629,7 @@ Global DOM <br /> e.g. `id` attributes
 
 class: code-reveal, container, wide, top, long
 
-## Shadow DOM - In Action <button data-action="createhackferencebrum">Create hackferencebrum</button>
+## Shadow DOM - In Action <small class="container">Will it Bleed?</small> <button data-action="createHackferenceBrum">Create hackferencebrum</button>
 
 --
 
@@ -684,10 +689,13 @@ class: middle, center
 ## Why Shadow DOM?
 
 * DOM & CSS Scoping
-* Protection for all: Page and Element
 * Encapsulation
+* Protection for all: Page and Element
 
 ???
+
+* scoping and encapsulation.
+* resulting in protection for all!
 
 ---
 
@@ -789,7 +797,7 @@ class: center, middle
 
 # Why Use HTML Imports?
 
-* Bundle JS/HTML/CSS → single URL
+* Reqiure JS/HTML/CSS → single URL
 * Basic dependency management
 * Sharing, Reuse, Composition
 
@@ -807,8 +815,8 @@ class: center, middle
 	var importDoc = currentScript.ownerDocument;
 	
 	TeamPusherPrototype.createdCallback = function() {
-    var content = importDoc.querySelector( '#team-pusher-tmpl' ).content;
-	  // ...
+		var content = importDoc.querySelector( '#team-pusher-tmpl' ).content;
+		// ...
 	};
 
 } )( document._currentScript || document.currentScript );
@@ -846,18 +854,40 @@ Returns the &lt;script&gt; element whose script is currently being processed
 
 ---
 
+class: top trans-h
+## Fundamentals covered!
+
+--
+
+class: bg-cover bg-white
+background-image: url(img/food/burger.jpg)
+
+---
+
 class: bg-dark
 
 # The State of...
 
+
 ---
+
+## Highly Active - September
+
+* 24 public-webapps@w3.org email threads
+* 46 GitHub issue discussions
+
+---
+
+class: top fixed-width-list
 
 ## The State of Custom Elements
 
 * `is`
-  * Concerns around Accessibility
+	* Concerns around Accessibility
+--
+
 * Point of Upgrade
-  * When HTMLElement is transformed into Custom Element
+	* When HTMLElement is transformed into Custom Element
 
 ???
 * Accessibility
@@ -874,16 +904,15 @@ class: top fixed-width-list
 
 ## The State of Shadow DOM
 
-* `<content select="tag" />`
-  * Declarative element content placement
+* `<content select="tagName" />`
+	* Declarative element content placement
 --
 
 * `element.createShadowRoot({ mode: 'closed' });`
-  * protecting shadowRoot
+	* protecting shadowRoot
 --
 
-*  `.foo >>> div { color: red }`
-  * Shadow piercing combinators
+*  Shadow piercing combinators vs. CSS variables
 * ...
 
 ---
@@ -938,7 +967,7 @@ class: trans-h
 ---
 
 background-image: url(img/lost.gif)
-class: bg-cover
+class: bg-cover bottom trans-h
 
 ## All is not Lost
 
@@ -959,9 +988,18 @@ Shadow DOM: CSS encapsulation limited etc.
 ---
 
 class: bg-dark bg-contain bottom trans-h
-background-image: url(./img/beuller-happy.jpg)
+background-image: url(./img/wtf.gif)
 
-# Componentised Web Apps Now
+# Componentised Web Apps Now...???!
+
+---
+
+class: bg-cover
+background-image: url(img/food/good-food.jpg)
+
+???
+
+Well, at least I've not reminded you about all the food that's next door.
 
 ---
 
@@ -976,24 +1014,23 @@ In a Web Components talk, so probably not.
 
 ---
 
-class: top
+class: top long
 
 ## Componentised Web Apps Now - questions?
 
-*Should native browser support stop us thinking about building
-componentised web apps?*
+#### Should native browser support stop us thinking about building componentised web apps?
 
 --
 
-**No!**
+## No!
 
 --
 
-*Should we be build componentised web apps anyway?*
+#### Should we be build componentised web apps anyway?
 
 --
 
-**We're already building web apps out of components *right now*!**
+## We're already building web apps out of components *right now*!
 
 ---
 
@@ -1046,7 +1083,7 @@ angular.module('demo', [])
 
 ```xml
 			template: '<img src="http://avatars.io/' +
-					  '{{service}}/{{username}}" />'
+						'{{service}}/{{username}}" />'
 		};
 	});
 </script>
@@ -1348,11 +1385,15 @@ background-image: url(img/angular-2-component.png)
 
 ---
 
+class: top fixed-width-list
+
 ## Have a Strategy
 
-* Will libraries update to use Web Components?
-* Align with Web Components to make migrating easier
-	* Split UI rendering and business logic
+### Will libraries update to use Web Components?
+--
+
+### Align with Web Components to make migrating easier
+#### Split UI rendering and business logic
 
 ???
 
@@ -1376,7 +1417,7 @@ background-image: url(img/angular-2-component.png)
 ---
 
 template: lblue
-class: bg-video, em-text, trans-h bg-contain bg-white
+class: bg-video, em-text, trans-h bg-contain bg-white top
 
 ## 3. Demand
 
@@ -1453,10 +1494,12 @@ class: long, wide
 
 ---
 
-## Loose Coupling
+## *Encourages* Loose Coupling
 
 * Custom Events
 * Element API (interface)
+	* attributes
+	* functions
 * *Or use existing messaging frameworks*
 
 ???
@@ -1473,12 +1516,12 @@ class: wide, long, top, code-reveal
 <script>
 	var CustomEventPrototype = Object.create(HTMLElement.prototype);
 	CustomEventPrototype.createdCallback = function() {
-	  // Build element ...
-	  
-	  this.addEventListener('click', function() {
-	    var customEvent = new CustomEvent('cheese');
-	    this.dispatchEvent(customEvent);
-	  }.bind(this));
+		// Build element ...
+		
+		this.addEventListener('click', function() {
+			var customEvent = new CustomEvent('cheese');
+			this.dispatchEvent(customEvent);
+		}.bind(this));
 	};
 
 	// ...
@@ -1489,14 +1532,14 @@ class: wide, long, top, code-reveal
 ```xml
 	var customEl = document.getElementById('my_custom_ev');
 	customEl.addEventListener('cheese', function() {
-	  alert('cheese fired!');
+		alert('cheese fired!');
 	});
 </script>
 
 <custom-event-ex id="my_custom_ev"></custom-event-ex>
 ```
 
-<custom-event-ex id="my_custom_ev"></custom-event-ex>
+<custom-event-ex class="cristiano" id="my_custom_ev"></custom-event-ex>
 
 ---
 
@@ -1507,7 +1550,7 @@ class: wide, long, top, code-reveal
 ```xml
 <script>
 	CustomEventPrototype.startSpin = function() {
-	  this.img.classList.toggle('spin');
+		this.img.classList.toggle('spin');
 	};
 	
 	CustomEventPrototype.stopSpin = function() {
@@ -1527,7 +1570,7 @@ class: wide, long, top, code-reveal
 <custom-event-ex id="spin_el"></custom-event-ex>
 ```
 
-<custom-event-ex id="spin_el"></custom-event-ex>
+<custom-event-ex class="cristiano" id="spin_el"></custom-event-ex>
 
 ---
 
@@ -1561,10 +1604,16 @@ class: wide
 ## High Cohesion
 
 ```
-myavatar.html
-├── js/script.js
-├── css/styles.css
-└── img/bg.png
+bower_components/
+├── my-avatar/
+		└── my-avatar.html
+			 ├── js/script.js
+			 ├── css/styles.css
+			 └── img/bg.png
+├── pusher-notifications
+|   └── ...
+└── pusher-chat
+    └── ...
 ```
 
 ???
@@ -1573,17 +1622,25 @@ myavatar.html
 
 ---
 
-class: middle, center
+class: middle, center, fixed-width-list, top
 
 ## Problems? Solved in the future?
 
 * HTML Imports
-  * Vulcanize | HTTP2 | JavaScript modules
+	* Vulcanize | HTTP2 | JavaScript modules
+--
+
 * Shared scripts?
 	* Cache
 	* Multiple versions?
+--
+
 * JavaScript scoping in v2
+--
+
 * Better cross-component communication?
+--
+
 * Allow `<link>` for CSS in Shadow DOM?
 
 ???
@@ -1597,7 +1654,7 @@ class: top wide long bg-dark fixed-width-list
 ## Summary
 
 
-* Custom Elements - **Awesome**
+* Custom Elements - **Awesome & Fundamental**
 
 --
 
@@ -1641,11 +1698,10 @@ class: long
 
 ---
 
-class: title
+class: title bg-cover trans-all
+background-image: url(img/food/munchie-box.jpg)
 
 # Why you should be using Web Components Now. And How.
-
-## Questions?
 
 [leggetter.github.io/web-components-now](leggetter.github.io/web-components-now)
 

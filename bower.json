@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#~0.5.1",
-    "pusher-remark-themes": "*"
+    "pusher-remark-themes": "*",
+    "remark": "~0.12.0"
   }
 }
